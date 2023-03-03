@@ -1,0 +1,119 @@
+.bg {
+    background-color:#2FB271;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    box-shadow:1px 1px 2px 0px;
+    position: fixed;
+  }
+  a:link, a:visited {
+    color: rgb(0, 0, 0);
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+
+
+  .bg-ligh {
+    background-color: #2FB271;
+}
+a{
+padding: 20px;
+text-decoration: none;
+color: black;
+}
+.shadow{
+    box-shadow:1px 1px 2px 0px  ;
+    width: fit-content;
+    height: fit-content;
+    line-height: 30px;
+    text-align: left; 
+    box-sizing: content-box;
+}
+.active{
+    background-color: #2FB271;
+  color: white;
+
+}
+.content{
+    margin-left:200px;
+    margin-top: -28rem; 
+}
+.rental{
+  height: 400px;
+  width: 400px;
+  margin-left: 20rem;
+  margin-top: 50px;
+  background-color: #2FB271;
+  opacity: 52%;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px;
+  
+  
+}
+.rent{
+  margin-left: 50px;
+  height: 30px;
+  width: 300px;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+}
+.submit{
+  background-color: white;
+  color:#2FB271;
+  border: none;
+  border-radius: 20px;
+  height: 30px;
+  width: 100px;
+  
+}
+.radius{
+  border-radius: 30px;
+}
+.p{
+text-align: center;
+color: #2FB271;
+font-size: 30px;
+margin-top: 20px;
+}
+.t_head{
+  background-color: #2FB271;
+  color: white;
+}
+.button{
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+}
+.button1{
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+}
+body{
+  padding: 0px;
+  margin: 0px;
+}
+a:hover,a:active{
+  color: #2FB271;
+  
+}
+.table{
+  margin-top: 2rem;
+}
+.review {
+  width: 45rem;
+  height: 7rem;
+  box-shadow: 0px 0px 5px 0px;
+  margin-left: 10rem;
+  margin-top: 2rem;
+}

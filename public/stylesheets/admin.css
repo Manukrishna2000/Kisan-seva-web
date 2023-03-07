@@ -19,7 +19,7 @@
   .bg-ligh {
     background-color: #2FB271;
 }
-a{
+.a{
 padding: 20px;
 text-decoration: none;
 color: black;
@@ -102,6 +102,7 @@ margin-top: 20px;
 body{
   padding: 0px;
   margin: 0px;
+  font-style: Nunito;
 }
 a:hover,a:active{
   color: #2FB271;
@@ -116,4 +117,252 @@ a:hover,a:active{
   box-shadow: 0px 0px 5px 0px;
   margin-left: 10rem;
   margin-top: 2rem;
+}
+.farm{
+  background-color: #5E902A;
+  height: 40px;
+    width: 100%;
+    display: flex;
+    box-shadow:1px 1px 2px 0px;
+
+}
+.fa{
+  color: white;
+}
+a:link{
+color: rgb(2, 2, 2);
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;}
+a:visited{
+  color: black;
+}
+a:active{
+  color: black;
+}
+.farmcontent{
+  margin-top: 2rem;
+  
+}
+.d-flex {
+  display: -webkit-box!important;
+  display: -ms-flexbox!important;
+  display: flex!important;
+  justify-content: space-evenly;
+}
+.over{
+  overflow: auto;
+  display: flex;
+}
+.img{
+    height: 17rem;
+    width: 15rem;
+    border-radius: 10px;
+}
+
+*{
+  box-sizing: border-box;
+}
+body{
+  color: grey;
+}
+#sidebar{
+  width: 20%;
+  padding: 10px;
+  margin: 0;
+  float: left;
+}
+#products{
+  width: 80%;
+  padding: 10px;
+  margin: 0;
+  float: right;
+}
+ul{
+  list-style: none;
+  padding: 5px;
+}
+li a{
+  color: darkgray;
+  text-decoration: none;
+}
+li a:hover{
+  text-decoration: none;
+  color: darksalmon;
+}
+.fa-circle{
+  font-size: 20px;
+}
+#red{
+  color: #e94545d7;
+}
+#teal{
+  color: rgb(69, 129, 129);
+}
+#blue{
+  color: #0000ff;
+}
+.card{
+  width: 250px;
+  display: inline-block;
+  height: 300px;
+}
+.card-img-top{
+  width: 250px;
+  height: 210px;
+}
+.card-body p{
+  margin: 2px;
+}
+.card-body{
+  padding: 0;
+  padding-left: 2px;
+}
+.filter{
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media(min-width:991px){
+  .navbar-nav{
+      margin-left: 35%;
+  }
+  .nav-item{
+      padding-left: 20px;
+  }
+  .card{
+      width: 190px;
+      display: inline-block;
+      height: 300px;
+  }
+  .card-img-top{
+      width: 188px;
+      height: 210px;
+  }
+  #mobile-filter{
+      display: none;
+  }
+}
+@media(min-width:768px) and (max-width:991px){
+  .navbar-nav{
+      margin-left: 20%;
+  }
+  .nav-item{
+      padding-left: 10px;
+  }
+  .card{
+      width: 230px;
+      display: inline-block;
+      height: 300px;
+      margin-bottom: 10px;
+  }
+  .card-img-top{
+      width: 230px;
+      height: 210px;
+  }
+  #mobile-filter{
+      display: none;
+  }
+}
+@media(min-width:568px) and (max-width:767px){
+  .navbar-nav{
+      margin-left: 20%;
+  }
+  .nav-item{
+      padding-left: 10px;
+  }
+  .card{
+      width: 205px;
+      display: inline-block;
+      height: 300px;
+      margin-bottom: 10px;
+  }
+  .card-img-top{
+      width: 203px;
+      height: 210px;
+  }
+  .fa-circle{
+      font-size: 15px;
+  }
+  #mobile-filter{
+      display: none;
+  }
+}
+@media(max-width:567px){
+  .navbar-nav{
+      margin-left: 0%;
+  }
+  .nav-item{
+      padding-left: 10px;
+  }
+  #sidebar{
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+      float: left;
+  }
+  #products{
+      width: 100%;
+      padding: 5px;
+      margin: 0;
+      float: right;
+  }
+  .card{
+      width: 230px;
+      display: inline-block;
+      height: 300px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+  }
+  .card-img-top{
+      width: 230px;
+      height: 210px;
+  }
+  .list-group-item{
+      padding: 3px;
+  }
+  .offset-1{
+      margin-left: 8%;
+  }
+  .filter{
+      display: block;
+      margin-left: 70%;
+      margin-top: 2%;
+  }
+  #sidebar{
+      display: none;
+  }
+  #mobile-filter{
+      padding: 10px;
+  }
+}
+
+.farmform{
+  height: 400px;
+  width: 400px;
+  margin-left: 27rem;
+  margin-top: 50px;
+  background-color: #5e902a33;
+  opacity: 100%;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px;
+}
+.f_head{
+  color: #5E902A;
+  text-align: center;
+  font-style: Nunito;
+  font-size: xx-large;
+  
+}
+.t_head1{
+  width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: #E4ECDB;
+}
+.farm_tabel{
+  margin-left: 7rem;
+  margin-right: 7rem;
 }

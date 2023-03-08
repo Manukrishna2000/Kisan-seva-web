@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var userRouter = require('./routes/user');
+
 var adminRouter=require('./routes/admin');
 var farmerRouter=require('./routes/farmer');
 var workerRouter=require('./routes/worker');
@@ -29,8 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', userRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/farmer',farmerRouter);
 app.use('/worker', workerRouter);

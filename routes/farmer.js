@@ -25,5 +25,16 @@ router.get('/view_work', function(req, res, next) {
   res.render('farmer/view_work',{farmerroute:true});
 });
 
+router.get('/booking', function(req, res, next) {
+  res.render('farmer/booking',{farmerroute:true});
+});
+
+router.get('/profile', function(req, res, next) {
+  res.render('farmer/profile',{farmerroute:true});
+});
+
+router.get('/my_orders', function(req, res, next) {
+  res.render('farmer/my_orders',{farmerroute:true});
+});
 
 module.exports = router;

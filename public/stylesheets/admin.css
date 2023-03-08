@@ -6,13 +6,13 @@
     box-shadow:1px 1px 2px 0px;
     position: fixed;
   }
-  a:link, a:visited {
+  /* a:link, a:visited {
     color: rgb(0, 0, 0);
     padding: 15px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-  }
+  } */
   
 
 
@@ -120,7 +120,7 @@ a:hover,a:active{
 }
 .farm{
   background-color: #5E902A;
-  height: 40px;
+  height: auto;
     width: 100%;
     display: flex;
     box-shadow:1px 1px 2px 0px;
@@ -128,17 +128,39 @@ a:hover,a:active{
 }
 .fa{
   color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* margin-top: -0.5rem; */
 }
-a:link{
+.fa:active{
+  color: black;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: -0.5rem;
+}
+.fa:hover{
+  color: black;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: -0.5rem;
+
+}
+.ad:link{
 color: rgb(2, 2, 2);
     padding: 15px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;}
-a:visited{
+.ad:visited{
   color: black;
 }
-a:active{
+.ad:active{
   color: black;
 }
 .farmcontent{
@@ -365,4 +387,88 @@ li a:hover{
 .farm_tabel{
   margin-left: 7rem;
   margin-right: 7rem;
+}
+.booking{
+  margin-left: 33rem;
+    margin-top: -21rem;
+    margin-right: 30rem;
+}
+.b_image{
+  border-radius: 14px;
+    margin-left: 9rem;
+    height: 21rem;
+    width: 21rem;
+    margin-top: 2rem;
+}
+.button2{
+  background-color: black;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+}
+.rating{
+  box-shadow: -4px 4px 6px 0px;
+    width: 32rem;
+    height: 4rem;
+    border: 2rem;
+    margin-left: 33rem;
+    margin-top: 4rem;
+}
+.fa{
+  color: white;
+}
+.wel{
+  background-color: white;
+  width: 10rem;
+  height:2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border-radius: 2rem;
+}
+.we{
+  margin-left: 3rem;
+  font-style: nunito;
+}
+.pro{
+  margin-left: 6rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 6rem;
+  margin-top: 2rem;
+  box-shadow: 0px 0px 6px 0px;
+}
+.prof{
+  width: 20rem;
+    height: 27rem;
+    color: black;
+    background-color: #5e902a33;
+    margin-left: 31rem;
+  box-shadow: 0px 0px 6px 0px;
+  border-radius: 30px;
+}
+.t_pro{
+  line-height: 3rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+.cust{
+  background-image: url(/images/as.png);
+    background-size: 100%;
+    height: 34rem;
+
+}
+.custnav{
+  margin-top: -31rem;
+    background-color: white;
+    height: 2.5rem;
+    width: 100%;
+    box-shadow: 0px 0px 7px 0px;
+}
+.cust_a{
+  font-size: 20px;
+  padding: 10px;
 }

@@ -702,3 +702,138 @@ width: 100%;
   background-color: white;
   color: #5E902A;
 }
+.reg{
+  border: none;
+  border-bottom: 0.5px solid;
+}
+.register{
+  height: 34rem;
+  width: 400px;
+  margin-left: 27rem;
+  margin-top: 50px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px;
+}
+.button3{
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+}
+.register_nav{
+  background-color: #2FB271;
+height: 3rem;
+  width: 100%;
+  display: flex;
+  box-shadow:1px 1px 2px 0px;
+}
+.home_button{
+  background-color: white;
+  border-radius: 20px;
+  width: 7rem;
+  height: auto;
+  color: #2FB271;
+  border: none;
+  text-align: center;
+  position: relative;
+  top: 10px;
+  left: 2rem;
+}
+.re{
+  color:#5E902A;
+  text-decoration: none;
+}
+.cust_register{
+  background-image: url("/images/as.png");
+  width: 100%;
+  position: relative;
+}
+.cust_reg{
+  height: 34rem;
+  width: 400px;
+  margin-left: 27rem;
+  margin-top: 50px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px;
+}
+.login{
+  width: 20rem;
+  height: 20rem;
+  position: absolute;
+  top: 12rem;
+  right: 6rem;
+  background-color: white;
+  border-radius: 26px;
+  box-shadow: 0px 0px 17px 0px;
+}
+.log{
+  width: 15rem;
+  margin-left: 3rem;
+  height: 3rem;
+  margin-top: 2rem;
+}
+.button4{
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 15rem;
+  height: 30px;
+  border-radius: 20px;
+  margin-left: 3rem;
+}
+.worker{
+  background-image: url(/images/workers.png);
+    background-size: 100%;
+    height: 34rem;
+
+}
+.work_content{
+  margin-top: 2rem;
+}
+.work_request{
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+font-size: 30px;
+color:#000;
+}
+.search_button{
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 7rem;
+  height: 30px;
+  border-radius: 20px;
+}
+.req{
+  margin-left: 2rem;
+  height: 12rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.work_body{
+  background-color: #E4ECDB;
+}
+.data{
+  margin-left: 2rem;
+}
+.button_log{
+  bottom: 33rem;
+  position: absolute;
+  margin-left: 2rem;
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 7rem;
+  height: 30px;
+  border-radius: 20px;
+}
+.foot{
+  background-color: #000;
+  color: white;
+  background-size: 100%;
+}

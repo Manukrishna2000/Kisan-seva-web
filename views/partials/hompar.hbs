@@ -4,18 +4,29 @@
     
 </div>
 <nav class="nav_home">
-    <a class="a_home">Shop now</a>
+    {{!-- <a class="a_home">Shop now</a> --}}
     <div class="dropdown">
   <span>Register</span>
   <div class="dropdown-content">
-    <p>Farmer</p>
-    <p>Customer</p>
-    <p>Worker</p>
+    <a href="/farmer_register" class="re"> <p>Farmer</p></a>
+    <a href="/cust_register" class="re"><p>Customer</p></a>
+    <a href="/worker_register" class="re"><p>Worker</p></a>
   </div>
 </div>
-    <a class="a_home">Login</a>
+    <a class="a_home" href="/login">Login</a>
 </nav>
 <div class="bottom-left">KISAN SEVA</div>
- <div class="cust_content">
+<div class="login">
+    <div class="form-group">
+    <input type="text" class="form-control log" id="" aria-describedby="emailHelp" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control log" id="" aria-describedby="emailHelp" placeholder="Password"><br>
+  </div>
+  <div class="form-group">
+  <button type="submit" class="button4">Login</button>
+  </div>
+</div>
+ <div class="home_content">
     {{{body}}}
     </div>

@@ -9,6 +9,7 @@ var adminRouter=require('./routes/admin');
 var farmerRouter=require('./routes/farmer');
 var workerRouter=require('./routes/worker');
 var usersRouter = require('./routes/users');
+var homeRouter=require('./routes/home');
 var hbs = require('express-handlebars');
 
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/',homeRouter);
 app.use('/user', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/farmer',farmerRouter);

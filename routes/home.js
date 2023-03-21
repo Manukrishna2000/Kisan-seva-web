@@ -1,5 +1,32 @@
 var express = require('express');
+const db = require('../config/connection');
+const register = require('../mongodb/farmer_help');
 var router = express.Router();
+
+// form action 
+
+router.post('/farmer_register_post', function(req, res, next) {
+  register(req.body)
+  res.render('home/index',{homeroute:true})
+});
+router.post('/worker_register_post', function(req, res, next) {
+  register(req.body)
+  res.render('home/index',{homeroute:true})
+});
+router.post('/customer_register_post', function(req, res, next) {
+  register(req.body)
+  res.render('home/index',{homeroute:true})
+});
+router.post('/login_post', function(req, res, next) {
+db.collection('register').find(req.body.Username)
+  
+});
+
+
+
+// end of form action
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

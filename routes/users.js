@@ -1,10 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('customer/cust_home',{custeroute:true})
+//form actions
+router.post('/checkout_post', function(req, res, next) {
+  db.collection('checkout').insertOne(req.body)
+  res.render('user/orders',{farmerroute:true});
+
 });
+
+
+
+/* GET users listing. */
+
 
 router.get('/cart', function(req, res, next) {
   res.render('customer/cart',{custeroute:true})

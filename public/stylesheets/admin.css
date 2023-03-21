@@ -128,27 +128,27 @@ a:hover,a:active{
 }
 .fa{
   color: white;
-    padding: 15px 25px;
+    padding: 10px 17px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    /* margin-top: -0.5rem; */
+    margin-left: 6px;
 }
 .fa:active{
   color: black;
-    padding: 15px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: -0.5rem;
+  padding: 10px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 6px;
 }
 .fa:hover{
   color: black;
-    padding: 15px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: -0.5rem;
+  padding: 10px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 6px;
 
 }
 .ad:link{
@@ -421,14 +421,14 @@ li a:hover{
 }
 .wel{
   background-color: white;
-  width: 10rem;
+  width: 5rem;
   height:2rem;
   margin-top: 1rem;
   margin-left: 1rem;
   border-radius: 2rem;
 }
 .we{
-  margin-left: 3rem;
+
   font-style: nunito;
 }
 .pro{
@@ -659,16 +659,17 @@ width: 100%;
 
   }
   .nav_home{
-    background-color: #5E902A;
+    /* background-color: #5E902A; */
     position: relative;
     bottom: 39rem;
-    color: white;
+    color: black;
     height: 2rem;
     text-align: end;
-    box-shadow:0px 1px 6px 0px black ;
+    font-size: 20px;
+    /* box-shadow:0px 1px 6px 0px black ; */
   }
   .a_home{
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 0rem 2rem 0rem 4rem;
 
@@ -740,7 +741,7 @@ height: 3rem;
   text-align: center;
   position: relative;
   top: 10px;
-  left: 2rem;
+  left: 10px;
 }
 .re{
   color:#5E902A;
@@ -836,4 +837,33 @@ color:#000;
   background-color: #000;
   color: white;
   background-size: 100%;
+}
+.search_button1{
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 7rem;
+  height: 30px;
+  border-radius: 20px;
+  margin-top: 14px;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
 }

@@ -73,9 +73,15 @@
         <h6 class="p-1 border-bottom">Filter By</h6>
         <p class="mb-2">Pincode</p>
         <ul class="list-group">
-            <li class="list-group-item list-group-item-action mb-2 rounded"><div class="input-group">
-    <input type="search" id="form1" class="form-control" />
-  <button type="button" class="btn btn-primary">
+            
+    <form>
+    <datalist id="suggestions" >
+        <option>First option</option>
+        <option>Second Option</option>
+    </datalist>
+    <input  autoComplete="on" list="suggestions" />
+    <input type="submit" value="search" class="search_button1">
+</form>
     
     </div>
 </section>

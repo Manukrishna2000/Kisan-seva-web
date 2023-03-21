@@ -1,5 +1,20 @@
 var express = require('express');
+const db = require('../config/connection');
 var router = express.Router();
+
+//form actions
+router.post('/farm_product_post', function(req, res, next) {
+  db.collection('farmer_products').insertOne(req.body)
+  res.render('farmer/sell_products',{farmerroute:true});
+
+});
+
+router.post('/work_request_post', function(req, res, next) {
+  db.collection('Work_request').insertOne(req.body)
+  res.render('farmer/work_request',{farmerroute:true});
+
+});
+// form actions
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,3 +53,4 @@ router.get('/my_orders', function(req, res, next) {
 });
 
 module.exports = router;
+

@@ -1,16 +1,17 @@
 var express = require('express');
 const db = require('../config/connection');
+const fn = require('../mongodb/farmer_help');
 var router = express.Router();
 
 //form actions
 router.post('/farm_product_post', function(req, res, next) {
-  db.collection('farmer_products').insertOne(req.body)
+  fn.farm_pro(req.body)
   res.render('farmer/sell_products',{farmerroute:true});
 
 });
 
 router.post('/work_request_post', function(req, res, next) {
-  db.collection('Work_request').insertOne(req.body)
+  fn.work(req.body)
   res.render('farmer/work_request',{farmerroute:true});
 
 });

@@ -1,9 +1,10 @@
 var express = require('express');
+const fn = require('../mongodb/customer_help');
 var router = express.Router();
 
 //form actions
 router.post('/checkout_post', function(req, res, next) {
-  db.collection('checkout').insertOne(req.body)
+  fn.checkout(req.body)
   res.render('user/orders',{farmerroute:true});
 
 });

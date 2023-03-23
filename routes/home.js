@@ -1,24 +1,68 @@
 var express = require('express');
 const db = require('../config/connection');
-const register = require('../mongodb/farmer_help');
+const fn = require('../mongodb/farmer_help');
 var router = express.Router();
 
 // form action 
 
 router.post('/farmer_register_post', function(req, res, next) {
-  register(req.body)
+  fn.register(req.body)
   res.render('home/index',{homeroute:true})
 });
 router.post('/worker_register_post', function(req, res, next) {
-  register(req.body)
+  fn.register(req.body)
   res.render('home/index',{homeroute:true})
 });
 router.post('/customer_register_post', function(req, res, next) {
-  register(req.body)
+  fn.register(req.body)
   res.render('home/index',{homeroute:true})
 });
-router.post('/login_post', function(req, res, next) {
-db.collection('register').find(req.body.Username)
+router.post('/login_post',async function(req, res, next) {
+  console.log(req.body);
+  let data = await db.collection('register').findOne({Username:req.body.Username,Password:req.body.Password}).then((response)=>{
+    console.log(response);
+    if(response==null){
+      res.redirect('/login')
+    }else if(response.Username=='admin' && response.Password=='admin'){
+      
+      req.session.loginStatus = true
+      req.session.admin=response
+      res.redirect('/admin')
+    }
+    else if(response.type=='farmer'){
+    req.session.loginStatus = true
+      req.session.admin=response
+      res.redirect('/farmer')
+      // console.log(message);
+  }
+  else if(response.type=='worker'){
+        res.redirect('/worker')
+      }
+      else{
+        res.redirect('/user')
+      }
+    })
+
+
+  
+  console.log(data);
+  // findOne({Username:req.body.Username});
+  // function(err,data){
+	// 	if(data){
+			
+	// 		if(data.Password==req.body.Password){
+	// 			console.log("Done Login");
+	// 			// req.session.userId = data.unique_id;
+	// 			console.log(req.session.userId);
+	// 			res.send({"Success":"Success!"});
+				
+	// 		}else{
+	// 			res.send({"Success":"Wrong password!"});
+	// 		}
+	// 	}else{
+	// 		res.send({"Success":"This Email Is not regestered!"});
+	// 	}
+	// }
   
 });
 

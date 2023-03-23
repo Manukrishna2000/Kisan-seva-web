@@ -1,18 +1,19 @@
 var express = require('express');
 const db = require('../config/connection');
+const fn = require('../mongodb/admin_help');
 var router = express.Router();
 
 
 //form action
 router.post('/product_post', function(req, res, next) {
-  db.collection('admin_products').insertOne(req.body)
+  fn.add(req.body)
   console.log(req.body)
   res.render('admin/products ',{adminroute:true})
 
 });
 
 router.post('/rental_post', function(req, res, next) {
-  db.collection('admin_rental').insertOne(req.body)
+  fn.rental(req.body)
   res.render('admin/rental ',{adminroute:true})
 
 });
@@ -30,8 +31,14 @@ router.post('/login', function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  db.collection('admin').insertOne({name:'manu', age:'22'})
-  res.render('admin/home',{adminroute:true})
+  if(req.session.loginStatus=true){
+    // db.collection('admin').insertOne({name:'manu', age:'22'})
+    res.render('admin/home',{adminroute:true})
+  }
+  // else{
+  //   res.redirect('/login')
+  // }
+  console.log(req.session,'/admin page');
 });
 router.get('/rental', function(req, res, next) {
   res.render('admin/add_rental',{adminroute:true})

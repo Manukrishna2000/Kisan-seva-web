@@ -29,12 +29,15 @@ router.get('/sell_product', function(req, res, next) {
   res.render('farmer/sell_products',{farmerroute:true});
 });
 
-router.get('/view_product', function(req, res, next) {
-  res.render('farmer/view_products',{farmerroute:true});
+router.get('/view_product', async function(req, res, next) {
+ let data= await db.collection('farmer_products').find().toArray()
+console.log(data)
+  res.render('farmer/view_products',{farmerroute:true,data});
 });
 
-router.get('/view_orders', function(req, res, next) {
-  res.render('farmer/view_orders',{farmerroute:true});
+router.get('/view_orders', async function(req, res, next) {
+ let data = await db.collection('checkout').find().toArray()
+  res.render('farmer/view_orders',{farmerroute:true,data});
 });
 
 router.get('/view_work', function(req, res, next) {

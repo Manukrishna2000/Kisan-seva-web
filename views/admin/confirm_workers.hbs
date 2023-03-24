@@ -14,26 +14,19 @@
     </tr>
   </thead>
   <tbody>
+  {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button class="button">Confirm</button><br><br>
-      <button class="button">Reject</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+      <td>{{this.Full_Name}}</td>
+      <td>{{this.Contact}}</td>
+      <td>{{this.Pincode}}</td>
+      <td>{{this.Photo}}</td>
+      <td>{{this.Id_proof}}</td>
+      <td>{{this.status}}</td>
+      <td><form action="/admin/confirm_worker_post/{{this._id}}" method="post"><input class="button" type="submit" name="approve" value="confirm"><br><br></a></form>
+      <form action="/admin/confirm_worker_post/{{this._id}}" method="post"><input class="button" type="submit" name="approve" value="reject"><br><br></a></form></td>
+    </tr>{{/each}}
+   
   </tbody>
 </table>
 </div>

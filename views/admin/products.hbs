@@ -15,25 +15,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    {{#each data}}<tr>
       <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{this.Name}}</td>
+      <td>{{this.Price}}</td>
+      <td>{{this.Category}}</td>
+      <td>{{this.Image}}</td>
+      <td>{{this.Pincode}}</td>
       <td></td>
       <td><button class="button">Edit</button><br><br>
       <button class="button">Delete</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    </tr>{{/each}}
+
   </tbody>
 </table>

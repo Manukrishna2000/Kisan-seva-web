@@ -29,20 +29,23 @@ router.post('/login_post',async function(req, res, next) {
       req.session.admin=response
       res.redirect('/admin')
     }
-    else if(response.type=='farmer'){
+    else if(response.type=='farmer' && response.status=='confirm'){
     req.session.loginStatus = true
       req.session.admin=response
       res.redirect('/farmer')
       // console.log(message);
   }
-  else if(response.type=='worker'){
+  else if(response.type=='worker' && response.status=='confirm'){
         res.redirect('/worker')
       }
-      else{
+      else if(response.type=='customer' && response.status=='confirm'){
         res.redirect('/user')
       }
+      else{
+        res.alert('invalid')
+      }
     })
-
+   
 
   
   console.log(data);

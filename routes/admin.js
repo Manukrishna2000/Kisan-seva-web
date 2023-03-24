@@ -1,6 +1,7 @@
 var express = require('express');
 const db = require('../config/connection');
 const fn = require('../mongodb/admin_help');
+const {ObjectId}=require('mongodb');
 var router = express.Router();
 
 
@@ -8,7 +9,7 @@ var router = express.Router();
 router.post('/product_post', function(req, res, next) {
   fn.add(req.body)
   console.log(req.body)
-  res.render('admin/products ',{adminroute:true})
+  res.redirect('/admin/products ',{adminroute:true})
 
 });
 
@@ -17,6 +18,27 @@ router.post('/rental_post', function(req, res, next) {
   res.render('admin/rental ',{adminroute:true})
 
 });
+
+router.post('/confirm_farmer_post/:id', async function(req, res, next) {
+ const objectId = new ObjectId(req.params.id)
+ if(req.body.approve=='confirm'){
+  await db.collection('register').updateOne({_id:objectId},{$set:{status:'confirm'}})}
+  else if(req.body.approve=='reject'){
+    await db.collection('register').updateOne({_id:objectId},{$set:{status:'reject'}})
+  }
+  console.log(res);
+  res.redirect('/admin/confirm_farmers')
+
+});
+router.post('/confirm_worker_post/:id', async function(req, res, next) {
+  const objectId = new ObjectId(req.params.id) 
+  if(req.body.approve=='confirm'){
+    await db.collection('register').updateOne({_id:objectId},{$set:{status:'confirm'}})}
+    else if(req.body.approve=='reject'){
+      await db.collection('register').updateOne({_id:objectId},{$set:{status:'reject'}})
+    }
+    res.redirect('/admin/confirm_workers')
+ });
 //end of form action
 
 
@@ -45,16 +67,19 @@ router.get('/rental', function(req, res, next) {
  
 });
 
-router.get('/view_rental', function(req, res, next) {
-  res.render('admin/view_rental',{adminroute:true})
+router.get('/view_rental', async function(req, res, next) {
+  let data = await db.collection('admin_rental').find().toArray()
+  res.render('admin/view_rental',{adminroute:true,data})
   
 });
-router.get('/confirm_workers', function(req, res, next) {
-  res.render('admin/confirm_workers',{adminroute:true})
+router.get('/confirm_workers', async function(req, res, next) {
+  let data = await db.collection('register').find({type:"worker"}).toArray()
+  res.render('admin/confirm_workers',{adminroute:true,data})
   
 });
-router.get('/confirm_farmers', function(req, res, next) {
-  res.render('admin/confirm_farmers',{adminroute:true})
+router.get('/confirm_farmers', async function(req, res, next) {
+  let data = await db.collection('register').find({type:"farmer"}).toArray()
+  res.render('admin/confirm_farmers',{adminroute:true,data})
   
 });
 router.get('/review', function(req, res, next) {
@@ -81,9 +106,11 @@ router.get('/add_products', function(req, res, next) {
   res.render('admin/add_products',{adminroute:true})
   
 });
-router.get('/products', function(req, res, next) {
-  res.render('admin/products',{adminroute:true})
-  ''
+router.get('/products', async function(req, res, next) {
+  let data = await db.collection('admin_products').find().toArray()
+
+  res.render('admin/products',{adminroute:true,data})
+  
 });
 module.exports = router;
 

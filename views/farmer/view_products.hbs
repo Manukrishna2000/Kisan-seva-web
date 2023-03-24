@@ -8,33 +8,24 @@
       <th scope="col">Image</th>
       <th scope="col">Category</th>
       <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Farmer</th>
+      <th scope="col">Stock</th>
       <th scope="col"></th>
       
     </tr>
   </thead>
   <tbody>
+    {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button class="button">Remove</button><br><br>
-      <td><button class="button">Edit</button><br><br>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+      <td>{{this.Name}}</td>
+      <td>{{this.Image}}</td>
+      <td>{{this.Category}}</td>
+      <td>{{this.Price}}</td>
+      <td>{{this.Stock}}</td>
+  
+      <td><button class="button">Remove</button>
+      <td><button class="button">Edit</button>
+    </tr>{{/each}}
   </tbody>
 </table>
 </div>

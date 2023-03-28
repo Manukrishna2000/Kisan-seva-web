@@ -4,12 +4,12 @@
 <table class="table .table1">
   <thead class="t_head">
     <tr>
-      <th scope="col">Sl No.</th>
+    
       <th scope="col">Service name</th>
+      <th scope="col">Wage</th>
+      <th scope="col">Image</th>
       <th scope="col">Category</th>
       <th scope="col">Pincode</th>
-      <th scope="col">Price</th>
-      <th scope="col">Image</th>
       <th scope="col">slots</th>
       <th scope="col"></th>
       <th scope="col"></th>
@@ -17,15 +17,14 @@
   </thead>
   <tbody>
     <tr>{{#each data}}
-      <th scope="row">1</th>
       <td>{{this.Name}}</td>
       <td>{{this.Wage}}</td>
-      <td>{{this.Image}}</td>
+      <td> <img src="/images/photos/{{this._id}}.jpg" height="200px" width="300px" alt=""> </td>
       <td>{{this.Category}}</td>
       <td>{{this.Pincode}}</td>
       <td></td>
       <td><button class="button">Edit</button><br><br>
-      <button class="button">Delete</button></td>
+      <form action="/admin/delete_post/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td>
     </tr>{{/each}}
     
   </tbody>

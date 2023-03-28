@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 var session = require('express-session')
+var fileUpload = require('express-fileupload')
 
 
 var adminRouter=require('./routes/admin');
@@ -32,12 +33,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(fileUpload());
 
 app.use(session({
   secret: 'SECRET',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: true }
+
+  
 }))
 
 

@@ -1,7 +1,9 @@
 var express = require('express');
+const { ObjectId } = require('mongodb');
 const db = require('../config/connection');
 const fn = require('../mongodb/farmer_help');
 var router = express.Router();
+
 
 //form actions
 router.post('/farm_product_post', function(req, res, next) {
@@ -18,8 +20,9 @@ router.post('/work_request_post', function(req, res, next) {
 // form actions
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('farmer/home',{farmerroute:true});
+router.get('/', async function(req, res, next) {
+  let data=await db.collection('admin_rental').find().toArray()
+  res.render('farmer/home',{farmerroute:true,data});
 });
 
 router.get('/work_request', function(req, res, next) {
@@ -44,12 +47,17 @@ router.get('/view_work', function(req, res, next) {
   res.render('farmer/view_work',{farmerroute:true});
 });
 
-router.get('/booking', function(req, res, next) {
-  res.render('farmer/booking',{farmerroute:true});
+router.get('/booking/:id', async function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  let data=await db.collection('admin_rental').findOne({_id:objectId})
+  res.render('farmer/booking',{farmerroute:true,data});
 });
 
-router.get('/profile', function(req, res, next) {
-  res.render('farmer/profile',{farmerroute:true});
+router.get('/profile',async function(req, res, next) {
+  let data=await db.collection('register').findOne({Username:req.session.userid})
+  console.log(data)
+  console.log(req.session.userid)
+  res.render('farmer/profile',{farmerroute:true,data});
 });
 
 router.get('/my_orders', function(req, res, next) {

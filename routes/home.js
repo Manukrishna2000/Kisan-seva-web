@@ -26,12 +26,13 @@ router.post('/login_post',async function(req, res, next) {
     }else if(response.Username=='admin' && response.Password=='admin'){
       
       req.session.loginStatus = true
-      req.session.admin=response
       res.redirect('/admin')
     }
     else if(response.type=='farmer' && response.status=='confirm'){
     req.session.loginStatus = true
-      req.session.admin=response
+    req.session.userid=response.Username
+    console.log(req.session);
+      
       res.redirect('/farmer')
       // console.log(message);
   }
@@ -42,7 +43,7 @@ router.post('/login_post',async function(req, res, next) {
         res.redirect('/user')
       }
       else{
-        res.alert('invalid')
+        res.write('invalid')
       }
     })
    

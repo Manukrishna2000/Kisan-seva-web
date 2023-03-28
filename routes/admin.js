@@ -2,7 +2,10 @@ var express = require('express');
 const db = require('../config/connection');
 const fn = require('../mongodb/admin_help');
 const {ObjectId}=require('mongodb');
+const session = require('express-session');
+const { response } = require('../app');
 var router = express.Router();
+
 
 
 //form action
@@ -14,10 +17,12 @@ router.post('/product_post', function(req, res, next) {
 });
 
 router.post('/rental_post', function(req, res, next) {
-  fn.rental(req.body)
-  res.render('admin/rental ',{adminroute:true})
-
-});
+  fn.rental(req.body,(callback)=>{
+  let photo=req.files.Image
+  console.log(req.files);
+  photo.mv('public/images/photos/'+callback.insertedId+'.jpg')  
+  res.redirect('/admin/view_rental')
+  })});
 
 router.post('/confirm_farmer_post/:id', async function(req, res, next) {
  const objectId = new ObjectId(req.params.id)
@@ -39,6 +44,12 @@ router.post('/confirm_worker_post/:id', async function(req, res, next) {
     }
     res.redirect('/admin/confirm_workers')
  });
+ router.post('/delete_post/:id', function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  db.collection('admin_rental').deleteMany({_id:objectId})
+  res.redirect('/admin/view_rental')
+
+});
 //end of form action
 
 
@@ -51,15 +62,16 @@ router.post('/login', function(req, res, next) {
 });
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.session.loginStatus=true){
     // db.collection('admin').insertOne({name:'manu', age:'22'})
     res.render('admin/home',{adminroute:true})
   }
-  // else{
-  //   res.redirect('/login')
-  // }
+  else{
+    res.redirect('/login')
+  }
   console.log(req.session,'/admin page');
 });
 router.get('/rental', function(req, res, next) {

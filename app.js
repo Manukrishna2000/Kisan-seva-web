@@ -6,7 +6,14 @@ var logger = require('morgan');
 const mongoose = require('mongoose')
 var session = require('express-session')
 var fileUpload = require('express-fileupload')
+var app = express();
+app.use(session({
+  secret: 'SECRET',
+  resave: false,
+  saveUninitialized: true,
 
+  
+}))
 
 var adminRouter=require('./routes/admin');
 var farmerRouter=require('./routes/farmer');
@@ -15,7 +22,7 @@ var usersRouter = require('./routes/users');
 var homeRouter=require('./routes/home');
 var hbs = require('express-handlebars');
 
-var app = express();
+
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -35,14 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(fileUpload());
 
-app.use(session({
-  secret: 'SECRET',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-
-  
-}))
+const oneDay = 1000 * 60 * 60 * 24;
 
 
 

@@ -4,10 +4,10 @@
         <span class="navbar-toggler-icon"></span> 
     </button>
     <div class="collapse navbar-collapse" id="navbarColor">
-        <ul class="navbar-nav">            
-            <li class="nav-item "><a class="nav-link active" active="#" href="/farmer">RENT</a> </li>
-            <li class="nav-item "><a class="nav-link" href="/farmer/purchase">PURCHASE</a> </li>
-        </ul>        
+           <ul class="navbar-nav">            
+            <li class="nav-item "><a class="nav-link "  href="/farmer">RENT</a> </li>
+            <li class="nav-item "><a class="nav-link active" active="#" href="/farmer/purchase">PURCHASE</a> </li>
+        </ul>           
     </div>
     </div>    
 </nav>
@@ -59,12 +59,11 @@
     </div>
 </div>
 <section id="sidebar">
-           <a href="/farmer" class="a"> <h6 class="p-1 border-bottom">Filter</h6> </a><br>
-
+           <a href="/farmer/purchase" class="a"> <h6 class="p-1 border-bottom">Filter</h6> </a><br>
     <div>
         <h6 class="p-1 border-bottom">Category</h6>
-         <ul>{{#each data}}
-            <li><a href="/farmer/category_rent/{{this._id}}">{{this.Category}}</a></li>
+        <ul>{{#each data}}
+            <li><a href="/farmer/category/{{this._id}}">{{this.Category}}</a></li>
             {{/each}}
         </ul>
     </div>
@@ -72,7 +71,8 @@
         <h6 class="p-1 border-bottom">Filter By</h6>
         <p class="mb-2">Pincode</p>
         <ul class="list-group">
- <form action="/farmer/pincode_rental" method="post">
+            
+    <form action="/farmer/pincode_purchase" method="post">
      <datalist id="suggestions" >{{#each data}}
      <option> {{this.Pincode}}</option>
         {{/each}}
@@ -88,10 +88,10 @@
     <div class="row">
         {{#each data}}<div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
             <div class="card">
-                <a href="/farmer/booking/{{this._id}}"><img class="card-img-top" src="/images/photos/{{this._id}}.jpg" alt="Card image cap"></a>
+                <a href="/farmer/purch_booking/{{this._id}}"><img class="card-img-top" src="/images/photos/{{this._id}}.jpg" alt="Card image cap"></a>
                 <div class="card-body">
                   <p class="card-text">{{this.Name}}</p>
-                  <p>{{this.Wage}}/per hour</p>
+                  <p>{{this.Wage}}</p>
                       
                 </div>   
               </div></div>   {{/each}}</div></div></section>

@@ -7,14 +7,21 @@ const { response } = require('../app');
 var router = express.Router();
 
 
-
+const ath = (req,res,next) =>{
+  if(req.session.loginStatus){
+    next()
+  }else{
+    res.redirect('/login')
+  }
+}
 //form action
 router.post('/product_post', function(req, res, next) {
-  fn.add(req.body)
-  console.log(req.body)
-  res.redirect('/admin/products ',{adminroute:true})
-
-});
+  fn.add(req.body,(callback)=>{
+    let photo=req.files.Image
+    console.log(req.files);
+    photo.mv('public/images/photos/'+callback.insertedId+'.jpg')  
+    res.redirect('/admin/view_products')
+    })});
 
 router.post('/rental_post', function(req, res, next) {
   fn.rental(req.body,(callback)=>{
@@ -46,8 +53,14 @@ router.post('/confirm_worker_post/:id', async function(req, res, next) {
  });
  router.post('/delete_post/:id', function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
-  db.collection('admin_rental').deleteMany({_id:objectId})
-  res.redirect('/admin/view_rental')
+  db.collection('farmer_products').deleteMany({_id:objectId})
+  res.redirect('/farmer/view_product')
+
+});
+router.post('/delete_post_product/:id', function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  db.collection('admin_products').deleteMany({_id:objectId})
+  res.redirect('/admin/products')
 
 });
 //end of form action
@@ -64,15 +77,15 @@ router.post('/login', function(req, res, next) {
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  if(req.session.loginStatus=true){
+router.get('/',ath, function(req, res, next) {
+  // if(req.session.loginStatus==true){
     // db.collection('admin').insertOne({name:'manu', age:'22'})
     res.render('admin/home',{adminroute:true})
-  }
-  else{
-    res.redirect('/login')
-  }
-  console.log(req.session,'/admin page');
+  // }
+  // else{
+    // res.redirect('/login')
+  // }
+  // console.log(req.sessionStore,'/admin page');
 });
 router.get('/rental', function(req, res, next) {
   res.render('admin/add_rental',{adminroute:true})
@@ -118,7 +131,7 @@ router.get('/add_products', function(req, res, next) {
   res.render('admin/add_products',{adminroute:true})
   
 });
-router.get('/products', async function(req, res, next) {
+router.get('/products',ath, async function(req, res, next) {
   let data = await db.collection('admin_products').find().toArray()
 
   res.render('admin/products',{adminroute:true,data})

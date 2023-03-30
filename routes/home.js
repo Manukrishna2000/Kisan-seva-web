@@ -19,10 +19,13 @@ router.post('/customer_register_post', function(req, res, next) {
 });
 router.post('/login_post',async function(req, res, next) {
   console.log(req.body);
+  if(!req.body.Username==''){
+    console.log('null true case');
+  console.log(req.body);
   let data = await db.collection('register').findOne({Username:req.body.Username,Password:req.body.Password}).then((response)=>{
     console.log(response);
     if(response==null){
-      res.redirect('/login')
+      
     }else if(response.Username=='admin' && response.Password=='admin'){
       
       req.session.loginStatus = true
@@ -67,6 +70,15 @@ router.post('/login_post',async function(req, res, next) {
 	// 		res.send({"Success":"This Email Is not regestered!"});
 	// 	}
 	// }
+  }else{
+    console.log('null else case');
+    let error = req.session.error ='email and password is null ';
+    console.log(req.session.error,'session');
+    res.redirect('/login')
+    // res.render('home/login',{homeroute:true,error})
+    req.session.error=null
+  
+  }
   
 });
 
@@ -90,6 +102,9 @@ router.get('/cust_register', function(req, res, next) {
   res.render('home/cust_register',{register:true})
 });
 router.get('/login', function(req, res, next) {
-  res.render('home/login',{homeroute:true})
+  let er = req.session.error
+  console.log(req.session.error,'error session');
+  console.log(Error);
+  res.render('home/login',{homeroute:true,error:req.session.error})
 });
 module.exports = router;

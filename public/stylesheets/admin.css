@@ -867,3 +867,6 @@ color:#000;
   padding: 10px;
   text-align: center;
 }
+.nav-link :active{
+  color: #5E902A;
+}

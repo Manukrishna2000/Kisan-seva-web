@@ -30,8 +30,10 @@ router.post('/delete_post/:id', function(req, res, next) {
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  if(req.session.loginStatus){
   let data=await db.collection('admin_rental').find().toArray()
-  res.render('farmer/home',{farmerroute:true,data});
+  res.render('farmer/home',{farmerroute:true,data});}
+  
 });
 
 router.get('/purchase', async function(req, res, next) {
@@ -58,7 +60,8 @@ router.get('/view_orders', async function(req, res, next) {
 });
 
 router.get('/view_work', function(req, res, next) {
-  res.render('farmer/view_work',{farmerroute:true});
+ let data= db.collection('work_request').find().toArray()
+  res.render('farmer/view_work',{farmerroute:true,data});
 });
 
 router.get('/booking/:id', async function(req, res, next) {

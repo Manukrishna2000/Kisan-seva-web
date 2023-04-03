@@ -5,15 +5,22 @@ const {ObjectId}=require('mongodb');
 const session = require('express-session');
 const { response } = require('../app');
 var router = express.Router();
+const nocache = require("nocache");
+const { ath } = require('../auth');
+
+// ...
 
 
-const ath = (req,res,next) =>{
-  if(req.session.loginStatus){
-    next()
-  }else{
-    res.redirect('/login')
-  }
-}
+
+
+// const ath = (req,res,next) =>{
+//   if(req.session.loginStatus){
+//   console.log(req.session.id);
+//     next()
+//   }else{
+//     res.redirect('/login')
+//   }
+// }
 //form action
 router.post('/product_post', function(req, res, next) {
   fn.add(req.body,(callback)=>{
@@ -73,7 +80,11 @@ router.post('/login', function(req, res, next) {
   console.log('server running...');
   console.log(req.body)
 });
+router.get('/logout',ath,function(req, res, next){
+  req.session.destroy();
 
+  res.redirect('/login');
+})
 
 
 /* GET home page. */
@@ -87,47 +98,47 @@ router.get('/',ath, function(req, res, next) {
   // }
   // console.log(req.sessionStore,'/admin page');
 });
-router.get('/rental', function(req, res, next) {
+router.get('/rental',ath, function(req, res, next) {
   res.render('admin/add_rental',{adminroute:true})
  
 });
 
-router.get('/view_rental', async function(req, res, next) {
+router.get('/view_rental',ath, async function(req, res, next) {
   let data = await db.collection('admin_rental').find().toArray()
   res.render('admin/view_rental',{adminroute:true,data})
   
 });
-router.get('/confirm_workers', async function(req, res, next) {
+router.get('/confirm_workers',ath, async function(req, res, next) {
   let data = await db.collection('register').find({type:"worker"}).toArray()
   res.render('admin/confirm_workers',{adminroute:true,data})
   
 });
-router.get('/confirm_farmers', async function(req, res, next) {
+router.get('/confirm_farmers',ath, async function(req, res, next) {
   let data = await db.collection('register').find({type:"farmer"}).toArray()
   res.render('admin/confirm_farmers',{adminroute:true,data})
   
 });
-router.get('/review', function(req, res, next) {
+router.get('/review',ath, function(req, res, next) {
   res.render('admin/review',{adminroute:true})
   
 });
-router.get('/view_products', function(req, res, next) {
+router.get('/view_products',ath, function(req, res, next) {
   res.render('admin/view_products',{adminroute:true})
   
 });
-router.get('/view_farmers', function(req, res, next) {
+router.get('/view_farmers',ath, function(req, res, next) {
   res.render('admin/view_farmers',{adminroute:true})
   
 });
-router.get('/view_workers', function(req, res, next) {
+router.get('/view_workers',ath, function(req, res, next) {
   res.render('admin/view_workers',{adminroute:true})
   
 });
-router.get('/view_booking', function(req, res, next) {
+router.get('/view_booking',ath, function(req, res, next) {
   res.render('admin/view_booking',{adminroute:true})
   
 });
-router.get('/add_products', function(req, res, next) {
+router.get('/add_products',ath, function(req, res, next) {
   res.render('admin/add_products',{adminroute:true})
   
 });

@@ -12,13 +12,16 @@
     </tr>
   </thead>
   <tbody>
+    {{#each data}}
     <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-       </tr>
+      
+      <td>{{this.Type}}</td>
+      <td>{{this.Address}}</td>
+      <td>{{this.Date}}</td>
+      <td>{{this.Contact}}</td>
+        <td>{{this.status}}</td>
+
+       </tr>{{/each}}
     <tr>
       <th scope="row"></th>
       <td></td>

@@ -10,19 +10,22 @@
 <div class="work_body">
 <div class="container">
   <div class="row">
+      {{#each data}}
     <div class="col-sm">
       <div class="card req row-sm" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Work type</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Location</h6>
-    <p class="card-text">Date</p>
-    <p class="card-text">Contact</p><br>
+    <h5 class="card-title">{{this.Type}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{this.Date}}</h6>
+    <p class="card-text">{{this.Address}}</p>
+    <p class="card-text">{{this.Pincode}}</p><br>
+    <p class="card-text">{{this.Contact}}</p><br>
 
-    <a href="#" class="card-link"><input type="button" class="search_button" value="Accept"></a>
+    <form action="/worker/accept_work/{{this._id}}" method="post"><input type="submit" class="search_button"></form>
     </div>
   </div>
     </div>
-
+    {{/each}}
+{{!-- 
     <div class="col-sm">
      <div class="card req row-sm" style="width: 18rem;">
   <div class="card-body">
@@ -92,4 +95,4 @@
 
     
   </div>
-</div>
+</div> --}}

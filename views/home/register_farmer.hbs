@@ -1,4 +1,4 @@
-<form action="/farmer_register_post" method="post" >
+<form action="/farmer_register_post" method="post"  enctype="multipart/form-data">
     <h1 class="p">FARMER REGISTER</h1>
 <div class="register"><br><br>
     <div class="rent">
@@ -25,6 +25,9 @@
   </div>
   <div class="form-group">
     <input type="text" class="form-control reg" id="" aria-describedby="emailHelp" name="type" value="farmer" hidden><br> 
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control reg" id="" aria-describedby="emailHelp" name="status" value="pending" hidden><br> 
   </div>
   <div class="form-group">
   <button type="submit" class="button3">Register</button>

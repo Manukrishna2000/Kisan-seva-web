@@ -6,7 +6,9 @@ var logger = require('morgan');
 const mongoose = require('mongoose')
 var session = require('express-session')
 var fileUpload = require('express-fileupload')
+
 var app = express();
+
 app.use(session({
   secret: 'SECRET',
   resave: false,
@@ -21,7 +23,7 @@ var workerRouter=require('./routes/worker');
 var usersRouter = require('./routes/users');
 var homeRouter=require('./routes/home');
 var hbs = require('express-handlebars');
-
+const nocache = require('nocache');
 
 
 

@@ -1,21 +1,34 @@
 var express = require('express');
 const db = require('../config/connection');
 const fn = require('../mongodb/farmer_help');
+const { resetWatchers } = require('nodemon/lib/monitor/watch');
 var router = express.Router();
 
 // form action 
 
 router.post('/farmer_register_post', function(req, res, next) {
-  fn.register(req.body)
-  res.render('home/index',{homeroute:true})
+  fn.register(req.body,(callback)=>{
+  let photo=req.files.Photo
+  let id=req.files.Id_proof
+    console.log(req.files);
+    photo.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
+    id.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
+  res.redirect('/login')})
 });
+
 router.post('/worker_register_post', function(req, res, next) {
-  fn.register(req.body)
-  res.render('home/index',{homeroute:true})
-});
+  fn.register(req.body,(callback)=>{
+    let ph=req.files.Photos
+    let id_proof=req.files.Id_proofs
+      console.log(req.files);
+      ph.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
+      id_proof.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
+    res.redirect('/login')})
+  });
+
 router.post('/customer_register_post', function(req, res, next) {
-  fn.register(req.body)
-  res.render('home/index',{homeroute:true})
+  fn.register(req.body,(callback)=>{
+  res.render('home/index',{homeroute:true})})
 });
 router.post('/login_post',async function(req, res, next) {
   console.log(req.body);
@@ -40,9 +53,12 @@ router.post('/login_post',async function(req, res, next) {
       // console.log(message);
   }
   else if(response.type=='worker' && response.status=='confirm'){
+    req.session.loginStatus = true
         res.redirect('/worker')
       }
-      else if(response.type=='customer' && response.status=='confirm'){
+      else if(response.type=='customer'){
+        req.session.loginStatus = true
+    req.session.userid=response.Username
         res.redirect('/user')
       }
       else{

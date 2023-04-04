@@ -6,30 +6,60 @@ var router = express.Router();
 
 // form action 
 
-router.post('/farmer_register_post', function(req, res, next) {
-  fn.register(req.body,(callback)=>{
-  let photo=req.files.Photo
-  let id=req.files.Id_proof
-    console.log(req.files);
-    photo.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
-    id.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
-  res.redirect('/login')})
+router.post('/farmer_register_post', async function(req, res, next) {
+  let name=await db.collection('register').findOne({type:'farmer',Username:req.body.Username})
+  if(name){
+    req.session.ERor="username already exist"
+      res.redirect('/farmer_register')
+    
+  }
+  else{
+    fn.register(req.body,(callback)=>{
+      let photo=req.files.Photo
+      let id=req.files.Id_proof
+        console.log(req.files);
+        photo.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
+        id.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
+      res.redirect('/login')})
+  }
 });
 
-router.post('/worker_register_post', function(req, res, next) {
-  fn.register(req.body,(callback)=>{
-    let ph=req.files.Photos
-    let id_proof=req.files.Id_proofs
-      console.log(req.files);
-      ph.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
-      id_proof.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
-    res.redirect('/login')})
-  });
-
-router.post('/customer_register_post', function(req, res, next) {
-  fn.register(req.body,(callback)=>{
-  res.render('home/index',{homeroute:true})})
+router.post('/worker_register_post', async function(req, res, next) {
+  let name=await db.collection('register').findOne({type:'farmer',Username:req.body.Username})
+  if(name){
+    req.session.ERor="username already exist"
+      res.redirect('/worker_register')
+    
+  }
+  else{
+    fn.register(req.body,(callback)=>{
+      let ph=req.files.Photos
+      let id_proof=req.files.Id_proofs
+        console.log(req.files);
+        ph.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
+        id_proof.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
+      res.redirect('/login')})
+  }
 });
+
+
+router.post('/customer_register_post', async function(req, res, next) {
+  let user_c=await db.collection('register').findOne({type:'customer',Username:req.body.Username})
+  console.log(user_c);
+  if(user_c==null)
+  {
+    // console.log(response);
+    // if(req.body.Username==response.Username){
+      
+    }
+    else{
+    fn.register(req.body,(callback)=>{
+ res.redirect('/login')})
+ }
+});
+   
+    
+
 router.post('/login_post',async function(req, res, next) {
   console.log(req.body);
   if(!req.body.Username==''){
@@ -39,7 +69,9 @@ router.post('/login_post',async function(req, res, next) {
     console.log(response);
     if(response==null){
       
-    }else if(response.Username=='admin' && response.Password=='admin'){
+    }
+   
+    else if(response.Username=='admin' && response.Password=='admin'){
       
       req.session.loginStatus = true
       res.redirect('/admin')
@@ -105,17 +137,21 @@ router.post('/login_post',async function(req, res, next) {
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('home/index',{homeroute:true})
+router.get('/', async function(req, res, next) {
+  let data=await db.collection('Work_request').find({status:'pending'}).toArray()
+  res.render('home/index',{homeroute:true,data})
 });
 router.get('/farmer_register', function(req, res, next) {
-  res.render('home/register_farmer',{register:true})
+  let err=req.session.ERor
+  res.render('home/register_farmer',{register:true,err})
 });
 router.get('/worker_register', function(req, res, next) {
-  res.render('home/worker_register',{register:true})
+  let err=req.session.ERor
+  res.render('home/worker_register',{register:true,err})
 });
 router.get('/cust_register', function(req, res, next) {
-  res.render('home/cust_register',{register:true})
+  let err=req.session.ERor
+  res.render('home/cust_register',{register:true,err})
 });
 router.get('/login', function(req, res, next) {
   let er = req.session.error

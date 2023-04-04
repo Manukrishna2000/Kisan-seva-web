@@ -16,6 +16,8 @@ module.exports={
         })
     }
     ,work:function(value){
+        value
+        console.log(value);
         db.collection('Work_request').insertOne(value)
     }
 }

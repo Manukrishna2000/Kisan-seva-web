@@ -60,13 +60,13 @@ router.post('/confirm_worker_post/:id', async function(req, res, next) {
  });
  router.post('/delete_post/:id', function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
-  db.collection('farmer_products').deleteMany({_id:objectId})
+  db.collection('farmer_products').deleteOne({_id:objectId})
   res.redirect('/farmer/view_product')
 
 });
 router.post('/delete_post_product/:id', function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
-  db.collection('admin_products').deleteMany({_id:objectId})
+  db.collection('admin_products').deleteOne({_id:objectId})
   res.redirect('/admin/products')
 
 });
@@ -122,9 +122,16 @@ router.get('/review',ath, function(req, res, next) {
   res.render('admin/review',{adminroute:true})
   
 });
-router.get('/view_products',ath, function(req, res, next) {
-  res.render('admin/view_products',{adminroute:true})
+router.get('/view_products',ath, async function(req, res, next) {
+  let data=await db.collection('farmer_products').find().toArray()
+  res.render('admin/view_products',{adminroute:true,data})
   
+});
+router.post('/delete_post_farm_product/:id',function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  let data=db.collection('farmer_products').deleteOne({_id:objectId})
+  console.log(data);
+  res.redirect('/admin/view_products')
 });
 router.get('/view_farmers',ath, function(req, res, next) {
   res.render('admin/view_farmers',{adminroute:true})

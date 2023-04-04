@@ -3,37 +3,29 @@
 <table class="table .table1">
   <thead class="t_head">
     <tr>
-      <th scope="col">Sl No.</th>
+     
       <th scope="col">Name</th>
       <th scope="col">Image</th>
       <th scope="col">Category</th>
       <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">Stock</th>
       <th scope="col">Farmer</th>
       <th scope="col"></th>
       
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button class="button">Remove</button><br><br>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    {{#each data}}<tr>
+      
+      <td>{{this.Name}}</td>
+      <td><img src="/images/photos/{{this._id}}.jpg" height="200px" width="300px" alt=""></td>
+      <td>{{this.Category}}</td>
+      <td>{{this.Price}}/kg</td>
+      <td>{{this.Stock}} kg</td>
+      <td>{{this.user_id}}</td>
+      <td><form action="/admin/delete_post_farm_product/{{this._id}}" method="post"><input class="button" type="submit" value="Remove"><br><br></a></form></td>
+    </tr>{{/each}}
+   
   </tbody>
 </table>
 </div>

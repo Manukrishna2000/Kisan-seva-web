@@ -32,7 +32,7 @@ router.get('/',ath, async function(req, res, next) {
 router.get('/cart',ath, async function(req, res, next) {
   console.log(req.session.userid);
   let u=req.session.userid
-  let data1= await db.collection('cart').findOne({userid:u})
+  let data1= await db.collection('cart').find({userid:u}).toArray()
   console.log(data1);
   res.render('customer/cart',{custeroute:true,data1})
 });

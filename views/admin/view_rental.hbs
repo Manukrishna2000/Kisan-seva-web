@@ -22,7 +22,12 @@
       <td> <img src="/images/photos/{{this._id}}.jpg" height="200px" width="300px" alt=""> </td>
       <td>{{this.Category}}</td>
       <td>{{this.Pincode}}</td>
-      <td></td>
+      <td>{{this.slot1}}
+      {{this.slot2}}
+      {{this.slot3}}
+      {{this.slot4}}
+      {{this.slot5}}
+      {{this.slot6}}</td>
       <td><button class="button">Edit</button><br><br>
       <form action="/admin/delete_post/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td>
     </tr>{{/each}}

@@ -870,3 +870,11 @@ color:#000;
 .nav-link :active{
   color: #5E902A;
 }
+.slot{
+  padding: 1px 5px 8px;
+  left: -1rem;
+  width: 22rem;
+}
+.booking1{
+  border: none;
+}

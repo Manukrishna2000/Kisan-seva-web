@@ -875,3 +875,113 @@ text-align: center;
 .nav-link :active{
 color: #5E902A;
 }
+
+/* Define styles for mobile screens */
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .nav_home {
+    font-size: 14px;
+    bottom: 15rem;
+    /* other styles */
+  }
+  .bottom-left{
+    top: 2rem;
+    font-size: 2rem;
+
+  }
+  .login{
+    top: 15rem;
+    right: 3.5rem;
+    width: 15rem;
+    height: 10rem;
+
+  }
+  .log {
+    width: 10rem;
+    margin-left: 2.5rem;
+    height: 2rem;
+    margin-top: 1rem;
+}
+.button4 {
+  background-color: #2FB271;
+  color: white;
+  border: none;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 20px;
+  margin-left: 2.5rem;
+}
+.a_home {
+  color: black;
+  text-decoration: none;
+  padding: 2rem 1rem 0rem 2rem;
+}
+.cust {
+  
+  width: 20rem;
+  
+}
+
+.custnav{
+  margin-top: -26rem;
+    background-color: white;
+    height: 2rem;
+    width: 100%;
+    box-shadow: 0px 0px 7px 0px;
+    text-align: center;
+}
+.image{
+  width: 113%;
+  }
+  .cust_a {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    padding: 2rem 0rem 1rem 1.5rem;
+    font-style: oblique;
+    margin-left: 0rem;
+    
+}
+#products {
+  width: 61%;
+  margin-top: -31rem;
+  float: left;
+  height: 70%;
+  margin-left: 7rem;
+}
+
+.card-img-top {
+  width: 131px;
+  height: 111px;
+}
+.card{
+margin: auto;
+max-width: 950px;
+width: 90%;
+box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 1rem;
+border: transparent;
+height:11rem
+}
+
+#sidebar {
+  width: 33%;
+  padding: 0px;
+  margin-top: -32rem;
+  float: left;
+  /* display: flex; */
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  align-content: space-around;
+  justify-content: flex-end;
+  align-items: center;
+}
+#farmproducts {
+  width: 61%;
+  margin-top: 7rem;
+  float: left;
+  height: 70%;
+  margin-left: 13rem;
+}
+
+}
+

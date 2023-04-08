@@ -190,17 +190,18 @@ body{
 color: grey;
 }
 #sidebar{
-  width: 20%;
+width: 20%;
   padding: 10px;
-  margin: 0;
+  margin-top: -28rem;
   float: left;
 }
 
 #products{
-  width: 80%;
-  padding: 10px;
-  margin: 0;
-  float: right;
+margin-top: -28rem;
+width: 80%;
+padding: 10px;
+
+float: right;
 }
 
 ul{
@@ -315,52 +316,52 @@ margin: 0;
 }
 }
 @media(max-width:567px){
-  .navbar-nav{
-      margin-left: 0%;
-  }
-  .nav-item{
-      padding-left: 10px;
-  }
-  #sidebar{
-      width: 100%;
-      padding: 10px;
-      margin: 0;
-      float: left;
-  }
-  #products{
-      width: 100%;
-      padding: 5px;
-      margin: 0;
-      float: right;
-  }
-  .card{
-      width: 230px;
-      display: inline-block;
-      height: 300px;
-      margin-bottom: 10px;
-      margin-top: 10px;
-  }
-  .card-img-top{
-      width: 230px;
-      height: 210px;
-  }
-  .list-group-item{
-      padding: 3px;
-  }
-  .offset-1{
-      margin-left: 8%;
-  }
-  .filter{
-      display: block;
-      margin-left: 70%;
-      margin-top: 2%;
-  }
-  #sidebar{
-      display: none;
-  }
-  #mobile-filter{
-      padding: 10px;
-  }
+.navbar-nav{
+    margin-left: 0%;
+}
+.nav-item{
+    padding-left: 10px;
+}
+#sidebar{
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    float: left;
+}
+#products{
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    float: right;
+}
+.card{
+    width: 230px;
+    display: inline-block;
+    height: 300px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.card-img-top{
+    width: 230px;
+    height: 210px;
+}
+.list-group-item{
+    padding: 3px;
+}
+.offset-1{
+    margin-left: 8%;
+}
+.filter{
+    display: block;
+    margin-left: 70%;
+    margin-top: 2%;
+}
+/* #sidebar{
+    display: none;
+} */
+#mobile-filter{
+    padding: 10px;
+}
 }
 
 .farmform{
@@ -458,21 +459,21 @@ font-size: 20px;
 font-family: 'Nunito', sans-serif;
 }
 .cust{
-  background-image: url(/images/as.png);
-    background-size: 100%;
-    height: 34rem;
-
+  background-size: 100%;
+  height: 34rem;}
+.image{
+width: 100%;
 }
-.image{}
 
 
 .custnav{
-  margin-top: -31rem;
-    background-color: white;
-    height: 3rem;
-    width: 100%;
-    box-shadow: 0px 0px 7px 0px;
-    text-align: end;
+margin-top: -31rem;
+  background-color: white;
+  height: 3rem;
+  width: 100%;
+  box-shadow: 0px 0px 7px 0px;
+  text-align: end;
+  position: absolute;
 }
 .cust_a{
 font-size: 15px;
@@ -662,21 +663,22 @@ border-radius: 20px;
   width:100%;
   position: relative;
 
-  }
-  .nav_home{
-    /* background-color: #5E902A; */
-    position: relative;
-    bottom: 39rem;
-    color: black;
-    height: 2rem;
-    text-align: end;
-    font-size: 20px;
-    /* box-shadow:0px 1px 6px 0px black ; */
-  }
-  .a_home{
-    color: black;
-    text-decoration: none;
-    padding: 0rem 2rem 0rem 4rem;
+}
+.nav_home{
+  /* background-color: #5E902A; */
+  position: relative;
+  bottom: 39rem;
+  color: black;
+  height: 2rem;
+  text-align: end;
+  margin-top: 4rem;
+  font-size: 20px;
+  /* box-shadow:0px 1px 6px 0px black ; */
+}
+.a_home{
+  color: black;
+  text-decoration: none;
+  padding: 0rem 2rem 0rem 4rem;
 
 }
 .bottom-left {
@@ -713,13 +715,13 @@ border: none;
 border-bottom: 0.5px solid;
 }
 .register{
-  height: 34rem;
-  width: 400px;
-  margin-left: 27rem;
-  margin-top: 50px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 2px 2px 4px 2px;
+height: 34rem;
+width: 400px;
+margin-left: 0rem;
+margin-top: 50px;
+background-color: white;
+border-radius: 20px;
+box-shadow: 2px 2px 4px 2px;
 }
 .button3{
 background-color: #2FB271;
@@ -875,83 +877,104 @@ text-align: center;
 .nav-link :active{
 color: #5E902A;
 }
+.slot{
+padding: 1px 5px 8px;
+left: -1rem;
+width: 22rem;
+}
+.booking1{
+border: none;
+}
+@media screen and (max-width: 768px) {
+.some-class {
+  font-size: 16px;
+  /* other styles */
+}
+}
+#sidebarfarm{
+
+width: 20%;
+padding: 10px;
+margin-top: 1rem;
+float: left;
+}
 
 /* Define styles for mobile screens */
 @media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1.5) {
-  .nav_home {
-    font-size: 14px;
-    bottom: 15rem;
-    /* other styles */
-  }
-  .bottom-left{
-    top: 2rem;
-    font-size: 2rem;
+.nav_home {
+  font-size: 14px;
+  bottom: 15rem;
+  /* other styles */
+}
+.bottom-left{
+  top: 2rem;
+  font-size: 2rem;
 
-  }
-  .login{
-    top: 15rem;
-    right: 3.5rem;
-    width: 15rem;
-    height: 10rem;
+}
+.login{
+  top: 15rem;
+  right: 3.5rem;
+  width: 15rem;
+  height: 10rem;
 
-  }
-  .log {
-    width: 10rem;
-    margin-left: 2.5rem;
-    height: 2rem;
-    margin-top: 1rem;
+}
+.log {
+  width: 10rem;
+  margin-left: 2.5rem;
+  height: 2rem;
+  margin-top: 1rem;
 }
 .button4 {
-  background-color: #2FB271;
-  color: white;
-  border: none;
-  width: 10rem;
-  height: 2rem;
-  border-radius: 20px;
-  margin-left: 2.5rem;
+background-color: #2FB271;
+color: white;
+border: none;
+width: 10rem;
+height: 2rem;
+border-radius: 20px;
+margin-left: 2.5rem;
 }
 .a_home {
-  color: black;
-  text-decoration: none;
-  padding: 2rem 1rem 0rem 2rem;
+color: black;
+text-decoration: none;
+padding: 2rem 1rem 0rem 2rem;
 }
 .cust {
-  
-  width: 20rem;
-  
+
+width: 20rem;
+
 }
 
 .custnav{
-  margin-top: -26rem;
-    background-color: white;
-    height: 2rem;
-    width: 100%;
-    box-shadow: 0px 0px 7px 0px;
-    text-align: center;
+margin-top: -26rem;
+  background-color: white;
+  height: 2rem;
+  width: 100%;
+  box-shadow: 0px 0px 7px 0px;
+  text-align: center;
 }
 .image{
-  width: 113%;
-  }
-  .cust_a {
-    font-size: 15px;
-    color: black;
-    text-decoration: none;
-    padding: 2rem 0rem 1rem 1.5rem;
-    font-style: oblique;
-    margin-left: 0rem;
-    
+width: 113%;
+}
+.cust_a {
+  font-size: 15px;
+  color: black;
+  text-decoration: none;
+  padding: 2rem 0rem 1rem 1.5rem;
+  font-style: oblique;
+  margin-left: 0rem;
+  
 }
 #products {
-  width: 61%;
-  margin-top: -31rem;
-  float: left;
-  height: 70%;
-  margin-left: 7rem;
+width: 61%;
+margin-top: -31rem;
+float: left;
+height: 70%;
+margin-left: 7rem;
 }
 
 .card-img-top {
-  width: 131px;
-  height: 111px;
+width: 131px;
+height: 111px;
 }
 .card{
 margin: auto;
@@ -964,23 +987,23 @@ height:11rem
 }
 
 #sidebar {
-  width: 33%;
-  padding: 0px;
-  margin-top: -32rem;
-  float: left;
-  /* display: flex; */
-  flex-direction: row;
-  /* flex-wrap: wrap; */
-  align-content: space-around;
-  justify-content: flex-end;
-  align-items: center;
+width: 33%;
+padding: 0px;
+margin-top: -32rem;
+float: left;
+/* display: flex; */
+flex-direction: row;
+/* flex-wrap: wrap; */
+align-content: space-around;
+justify-content: flex-end;
+align-items: center;
 }
 #farmproducts {
-  width: 61%;
-  margin-top: 7rem;
-  float: left;
-  height: 70%;
-  margin-left: 13rem;
+width: 61%;
+margin-top: 7rem;
+float: left;
+height: 70%;
+margin-left: 13rem;
 }
 
 }

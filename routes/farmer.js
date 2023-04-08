@@ -4,6 +4,7 @@ const db = require('../config/connection');
 const fn = require('../mongodb/farmer_help');
 const { ath } = require('../auth');
 const async = require('hbs/lib/async');
+const { route } = require('./farmer');
 var router = express.Router();
 
 
@@ -30,6 +31,36 @@ router.post('/delete_post/:id',function(req, res, next) {
   let data=db.collection('farmer_products').deleteOne({_id:objectId})
   console.log(data);
   res.redirect('/farmer/view_product')
+});
+router.post('/rentalbooking_post/:id',async function(req,res,next){
+ let objectId=new ObjectId(req.params.id)
+ let data= await db.collection('farmer_rent_booking').insertOne(req.body)
+ console.log(data);
+ let slot 
+ if(req.body.slot1){
+  
+   db.collection('admin_rental').updateOne({_id:objectId},{$unset:{ slot1:'booked' }})
+  }
+  else if(req.body.slot2){
+    db.collection('admin_rental').updateOne({_id:objectId},{$unset:{ slot2:'booked' }})
+  }
+  else if(req.body.slot3){
+    db.collection('admin_rental').updateOne({_id:objectId},{$unset:{ slot3:'booked' }})
+
+  }
+  else if(req.body.slot4){
+    db.collection('admin_rental').updateOne({_id:objectId},{$unset:{ slot4:'booked' }})
+
+  }
+  else if(req.body.slot5){
+    db.collection('admin_rental').updateOne({_id:objectId},{$unset:{ slot5:'booked' }})
+
+  }
+  else if(req.body.slot6){
+    db.collection('admin_rental').updateOne({_id:objectId},{$unset:{ slot6:'booked' }})
+
+  }
+  res.redirect('/farmer/my_orders')
 });
 // form actions
 
@@ -72,10 +103,11 @@ router.get('/view_work',ath,async function(req, res, next) {
   res.render('farmer/view_work',{farmerroute:true,data});
 });
 
-router.get('/booking/:id',ath,  async function(req, res, next) {
+router.get('/booking/:id',  async function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
   let data=await db.collection('admin_rental').findOne({_id:objectId})
-  res.render('farmer/booking',{farmerroute:true,data});
+  let data1=req.session.userid
+  res.render('farmer/booking',{farmerroute:true,data,data1});
 });
 router.get('/purch_booking/:id',ath, async function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
@@ -125,6 +157,7 @@ router.get('/profile',ath, async function(req, res, next) {
 router.get('/my_orders',ath,  function(req, res, next) {
   res.render('farmer/my_orders',{farmerroute:true});
 });
+
 
 module.exports = router;
 

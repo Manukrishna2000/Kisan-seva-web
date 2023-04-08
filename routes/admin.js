@@ -60,8 +60,8 @@ router.post('/confirm_worker_post/:id', async function(req, res, next) {
  });
  router.post('/delete_post/:id', function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
-  db.collection('farmer_products').deleteOne({_id:objectId})
-  res.redirect('/farmer/view_product')
+  db.collection('admin_rental').deleteOne({_id:objectId})
+  res.redirect('/admin/view_rental')
 
 });
 router.post('/delete_post_product/:id', function(req, res, next) {

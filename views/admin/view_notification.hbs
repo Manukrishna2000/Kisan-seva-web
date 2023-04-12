@@ -1,0 +1,29 @@
+
+<a href="/admin/notification"><button class="button1">ADD</button></a>
+
+<table class="table .table1">
+  <thead class="t_head">
+    <tr>
+      {{!-- <th scope="col"></th> --}}
+      {{!-- <th scope="col">Farmer name</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Pincode</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Id proof</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th> --}}
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     {{#each data}}
+      <tr><td>{{this.Notification}}</td>
+           <td><form action="/admin/delete_post_noti/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td></tr>
+
+      {{/each}}
+    
+    </tr>
+    
+  </tbody>
+</table>

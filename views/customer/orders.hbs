@@ -1,46 +1,37 @@
-
-<div class="order_tabel">
-<table class="table .table1">
-  <thead class="t_head2">
+<div class="check">
+    <h1>My orders</h1>
+  </div>
+  <form>
+<div class="table table_cart">
+<table class="table ">
+  <thead class="t_head_cart">
     <tr>
-      <th scope="col"></th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Category</th>
+      <th scope="col">Name</th>
       <th scope="col">Price</th>
+      <th scope="col">Pincode</th>
       <th scope="col">Quantity</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Date</th>
-      <th scope="col">Status</th>
-      <th scope="col">Add Rating</th>
-     <th scope="col"> </th>
-     <th scope="col"></th>
+      <th scope="col">Address</th>
+      <th scope="col">Total</th>
+      <th scope="col"></th>
+     
     </tr>
   </thead>
-  <tbody>
+  <tbody>{{#each data}}
     <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{this.Name}}</td>
+      <td>{{this.Price}}</td>
+      <td>{{this.Pincode}}</td>
+      <td>{{this.Quantity}}</td>
+      <td>{{this.Address}}</td>
+      <td>{{this.Total}}</td>
 
-    </tr>
-    <tr>
-      <th scope="row"><img src="/images/tomato.jpg" class="img_order" alt=""></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-
-    </tr>
+    </tr>{{/each}}
   </tbody>
 </table>
+
+
 </div>
+</div>
+</form>
+
+

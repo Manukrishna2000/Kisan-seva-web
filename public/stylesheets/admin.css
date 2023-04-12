@@ -103,6 +103,7 @@ body{
 padding: 0px;
 margin: 0px;
 font-style: Nunito;
+
 }
 a:hover,a:active{
 color: #2FB271;
@@ -192,12 +193,12 @@ color: grey;
 #sidebar{
 width: 20%;
   padding: 10px;
-  margin-top: -28rem;
+  margin-top: 3%;
   float: left;
 }
 
 #products{
-margin-top: -28rem;
+margin-top: 3%;
 width: 80%;
 padding: 10px;
 
@@ -485,7 +486,7 @@ font-style: oblique;
 }
 
 .cust_content{
-  margin-top: 37%;
+  margin-top: 3%;
 
 }
 /* customer cart */
@@ -717,7 +718,7 @@ border-bottom: 0.5px solid;
 .register{
 height: 34rem;
 width: 400px;
-margin-left: 0rem;
+margin-left: 27rem;
 margin-top: 50px;
 background-color: white;
 border-radius: 20px;
@@ -817,11 +818,11 @@ height: 30px;
 border-radius: 20px;
 }
 .req{
-margin-left: 2rem;
-height: 12rem;
-margin-top: 2rem;
-margin-bottom: 2rem;
-text-align: center;
+  margin-left: 2rem;
+  height: 15rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 .work_body{
 background-color: #E4ECDB;
@@ -840,6 +841,7 @@ width: 7rem;
 height: 30px;
 border-radius: 20px;
 }
+
 .foot{
 background-color: #000;
 color: white;
@@ -885,6 +887,75 @@ width: 22rem;
 .booking1{
 border: none;
 }
+
+.noti{
+  height: 10rem;
+  width: 400px;
+  margin-left: 20rem;
+  margin-top: 50px;
+  background-color: #2FB271;
+  opacity: 52%;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px;
+  
+}
+.marq{
+  margin-top: -30rem;
+    position: absolute;
+    font-size: 23px;
+    color: black;
+    width: 78rem;
+    font-style: bold;
+}
+
+/* ratingbar */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.rate {
+  float: left;
+  height: 46px;
+  margin-top: -14px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+
+
+/* ratingbar end */
+
+
+/* android */
 @media screen and (max-width: 768px) {
 .some-class {
   font-size: 16px;

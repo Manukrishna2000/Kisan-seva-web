@@ -29,17 +29,24 @@ router.get('/',ath, async function(req, res, next) {
     res.redirect('/login')
   }
 });
-router.get('/cart',ath, async function(req, res, next) {
+router.get('/orders',ath, async function(req, res, next) {
   console.log(req.session.userid);
   let u=req.session.userid
-  let data1= await db.collection('cart').find({userid:u}).toArray()
-  console.log(data1);
-  res.render('customer/cart',{custeroute:true,data1})
+  let data= await db.collection('cust_order').find({User_id:u}).toArray()
+  console.log(data);
+  res.render('customer/orders',{custeroute:true,data})
+});
+router.post('/pincode_purchase',ath, async function(req, res, next) {
+  let data=await db.collection('farmer_products').find({Pincode:req.body.pincode}).toArray()
+  console.log(req.body.pincode);
+  res.render('customer/cust_home',{custeroute:true,data});
+});
+router.get('/category/:id',ath, async function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  let data=await db.collection('farmer_products').find({_id:objectId}).toArray()
+  res.render('customer/cust_home',{custeroute:true,data});
 });
 
-router.get('/orders',ath, function(req, res, next) {
-  res.render('customer/orders',{custeroute:true})
-});
 router.get('/book',ath, function(req, res, next) {
   res.render('customer/cust_book',{custeroute:true})
 });
@@ -51,11 +58,19 @@ router.get('/booking/:id',ath, async function(req, res, next) {
   let data=await db.collection('farmer_products').findOne({_id:objectId})
   console.log(data);
   let data1=req.session.userid
+  console.log(req.session.userid);
   res.render('customer/cust_book',{custeroute:true,data,data1})
 });
-router.post('/cart_post',async function(req,res,next){
-  await db.collection('cart').insertOne(req.body)
-  res.redirect('/user/cart')
+router.post('/cart_post/:id',async function(req,res,next){
+  await db.collection('cust_order').insertOne(req.body)
+  let objectId=new ObjectId(req.params.id)
+  let data = await db.collection('farmer_products').findOne({_id:objectId})
+    let newstock=data.Stock-req.body.Quantity;
+    await db.collection('farmer_products').updateOne(
+      { _id: objectId },
+      { $set: { Stock: newstock } }
+    );
+  res.redirect('/user/orders')
 })
 
 module.exports = router;

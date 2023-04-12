@@ -6,24 +6,27 @@
 <table class="table ">
   <thead class="t_head_cart">
     <tr>
-      <th scope="col"></th>
       <th scope="col">Name</th>
-      <th scope="col">Category</th>
       <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col">Pincode</th>
       <th scope="col">Quantity</th>
+      <th scope="col">Address</th>
       <th scope="col">Total</th>
       <th scope="col"></th>
       {{data1.Name}}
     </tr>
   </thead>
-  <tbody>{{#each data1}}
+  <tbody>{{#each data}}
     <tr>
       <td>{{this.Name}}</td>
-      <td>{{this.Price}}</td>
+      <td><input type="number" value="{{this.Price}}" name="PRICE" id="PRICE" readonly></td>
       <td>{{this.Category}}</td>
       <td>{{this.pincode}}</td>
-      <td>{{this.quantity}}</td>
+      <td><input type="number" value="{{this.quantity}}"  name="QTY" id="QTY" onkeyup="multiply()"></td>
       <td>{{this.Address}}</td>
+            <td><input type="number" id="TOTAL"></td>
+
     </tr>{{/each}}
   </tbody>
 </table>
@@ -36,5 +39,20 @@ SUB TOTAL
 </div>
 </div>
 </form>
+<script>
+
+  window.addEventListener('load',()=>{
+    multiply()
+  })
+function multiply()
+{
+  
+    a = Number(document.getElementById('QTY').value);
+    b = Number(document.getElementById('PRICE').value);
+    c = a * b;
+
+    document.getElementById('TOTAL').value=c;
+}
+</script>
 
 

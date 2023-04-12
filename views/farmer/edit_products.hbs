@@ -1,0 +1,32 @@
+<form action="/farmer/farm_edit_post/{{data._id}}" method="post" enctype="multipart/form-data">
+    <h1 class="f_head">UPDATE PRODUCTS</h1>
+<div class="farmform"><br><br>
+    <div class="rent">
+  <div class="form-group">
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="Name" placeholder="Name" value="{{data.Name}}">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="Price"  value="{{data.Price}}" placeholder="Price">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="Category" value="{{data.Category}}" placeholder="Category">
+  </div>
+  <div class="form-group">
+    <input type="file" class="form-control" id="" aria-describedby="emailHelp" name="Image"  placeholder="image">
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="" aria-describedby="emailHelp" name="Stock" value="{{data.Stock}}" placeholder="stock">
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="" aria-describedby="emailHelp" name="Pincode" value="{{data.Pincode}}" placeholder="Pincode">
+  </div>
+   <div class="form-group">
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="user_id" value="{{data.user_id}}" hidden>
+  </div>
+  <div class="form-group">
+  <button type="submit" class="submit">Add</button>
+  </div>
+  
+  </div>
+</div>
+</form>

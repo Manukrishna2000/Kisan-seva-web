@@ -86,6 +86,7 @@ router.post('/login_post',async function(req, res, next) {
   }
   else if(response.type=='worker' && response.status=='confirm'){
     req.session.loginStatus = true
+    req.session.userid=response.Username
         res.redirect('/worker')
       }
       else if(response.type=='customer'){
@@ -139,7 +140,8 @@ router.post('/login_post',async function(req, res, next) {
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
   let data=await db.collection('Work_request').find({status:'pending'}).toArray()
-  res.render('home/index',{homeroute:true,data})
+  let data1=await db.collection('notification').find().toArray()
+  res.render('home/index',{homeroute:true,data,data1})
 });
 router.get('/farmer_register', function(req, res, next) {
   let err=req.session.ERor

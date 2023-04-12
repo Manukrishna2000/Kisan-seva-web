@@ -9,6 +9,7 @@
       <th scope="col">Price</th>
       <th scope="col">Stock</th>
       <th scope="col"></th>
+      <th scope="col"></th>
       
     </tr>
   </thead>
@@ -23,7 +24,7 @@
       <td>{{this.Stock}}</td>
   
       <td><form action="/farmer/delete_post/{{this._id}}" method="post"><input class="button" type="submit" value="Remove"><br><br></a></form></td>
-      <td><button class="button">Edit</button>
+      <td><form action="/farmer/edit_post/{{this._id}}" method="post"><input class="button" type="submit" value="Edit"><br><br></a></form></td> 
     </tr>{{/each}}
   </tbody>
 </table>

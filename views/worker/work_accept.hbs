@@ -1,0 +1,68 @@
+<div class="work_request">
+  
+ <div class="work_request">Accepted work</div>
+
+<div class="farm_tabel" style="
+    font-size: 20px;
+">
+<table class="table .table1">
+  <thead class="t_head1">
+    <tr>
+      <th scope="col">Work type</th>
+      <th scope="col">Address</th>
+      <th scope="col">Date</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      
+      <td>{{this.Type}}</td>
+      <td>{{this.Address}}</td>
+      <td>{{this.Date}}</td>
+      <td>{{this.Contact}}</td>
+      
+      <td>
+
+         <div class="rate">
+  {{#if ../obj.RatingStatusFive  }}        
+    <input type="radio" checked id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusFour  }}
+    <input type="radio" checked id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <label for="star4" title="text">4 stars</label>
+    <label for="star4" title="text">4 stars</label>
+    <label for="star4" title="text">4 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusThree  }}
+    <input type="radio" checked disabled id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <label for="star3" title="text">3 stars</label>
+    <label for="star3" title="text">3 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusTwo  }}
+    <input type="radio" checked disabled id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <label for="star2" title="text">2 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusOne  }}
+    <input type="radio" checked disabled id="star1" name="rate" value="1" />
+    <label for="star1"  title="text">1 star</label>
+    <label for="star1"  title="text">1 star</label>
+  {{/if}}
+</div>
+      </td></tr>
+        {{/each}}
+
+    
+  </tbody>
+</table>
+</div>

@@ -4,32 +4,34 @@
   <thead class="t_head1">
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Image</th>
-      <th scope="col">Amount</th>
+      <th scope="col">Wage</th>
+      <th scope="col">Category</th>
+      <th scope="col">Pincode</th>
+      <th> Slot Booked</th>
       <th scope="col">Date</th>
       <th scope="col">Address</th>
-      <th scope="col">Pincode</th>
+     
 
       
     </tr>
   </thead>
   <tbody>
+    {{#each data}}
     <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-       </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+      <td>{{this.Name}}</td>
+      <td>{{this.Wage}}</td>
+      <td>{{this.Category}}</td>
+      <td>{{this.Pincode}}</td>
+      {{#if this.slot1}}<td>Mon</td>{{/if}}
+      {{#if this.slot2}}<td>Tue</td>{{/if}}
+      {{#if this.slot3}}<td>Wed</td>{{/if}}
+      {{#if this.slot4}}<td>Thu</td>{{/if}}
+      {{#if this.slot5}}<td>Fri</td>{{/if}}
+      {{#if this.slot6}}<td>Sat</td>{{/if}}
+      {{#if this.slot7}}<td>Sun</td>{{/if}}
+      <td>{{this.Date}}</td>
+      <td>{{this.Address}}</td>
+       </tr>{{/each}}
   </tbody>
 </table>
 </div>

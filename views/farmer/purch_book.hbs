@@ -1,16 +1,27 @@
 
+<form action="/farmer/rentalbooking_post/{{data._id}}" method="post">
 <img src="/images/photos/{{data._id}}.jpg" class="b_image">
 <div class="booking">
-{{data.Name}}<br>
-{{data.Wage}}<br>
-{{data.Category}}<br>
-Description<br>
-{{data.Pincode}}<br>
-slot<br>
-<form>
-<input type="date"  class="form-control" placeholder="date">
-<br><textarea placeholder="Address"></textarea><br><br>
-<button value="Book" class="button2">Book</button>
+<input type="text" class="booking1" name="Name" value="{{data.Name}}" readonly><br>
+<input type="text" class="booking1" name="Wage" value="{{data.Wage}}" readonly><br>
+<input type="text" class="booking1" name="Category" value="{{data.Category}}"readonly><br>
+{{!-- Description<br> --}}
+<input type="text" class="booking1" name="Pincode" value="{{data.Pincode}}" readonly><br>
+select slot<br>
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{#if data.slot1}}<input class="form-check-input" type="checkbox" name="slot1" value="slot1" id="flexCheckDefault">{{data.slot1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}
+  {{#if data.slot2}}<input class="form-check-input" type="checkbox" name="slot2" value="slot2" id="flexCheckDefault">{{data.slot2}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}
+  {{#if data.slot3}}<input class="form-check-input" type="checkbox" name="slot3" value="{{data.slot3}}" id="flexCheckDefault">{{data.slot3}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}
+  {{#if data.slot4}}<input class="form-check-input" type="checkbox" name="slot4" value="{{data.slot4}}" id="flexCheckDefault">{{data.slot4}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}
+  {{#if data.slot5}}<input class="form-check-input" type="checkbox" name="slot5" value="{{data.slot5}}" id="flexCheckDefault">{{data.slot5}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}
+  {{#if data.slot6}}<input class="form-check-input" type="checkbox" name="slot6" value="{{data.slot6}}" id="flexCheckDefault">{{data.slot6}}<br>{{/if}}
+<input type="date"  class="form-control" placeholder="date" name="Date">
+<br><textarea name="Address" placeholder="Address"></textarea><br><br>
+<input type="text" class="booking1" name="userid" value="{{data1}}" readonly hidden><br>
+<input type="submit"  class="button2" value="book">
 </div></form>
 <div class="rating">
     name     reviews<br>

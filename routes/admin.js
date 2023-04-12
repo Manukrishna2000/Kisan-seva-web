@@ -7,6 +7,7 @@ const { response } = require('../app');
 var router = express.Router();
 const nocache = require("nocache");
 const { ath } = require('../auth');
+const async = require('hbs/lib/async');
 
 // ...
 
@@ -116,7 +117,6 @@ router.get('/confirm_workers',ath, async function(req, res, next) {
 router.get('/confirm_farmers',ath, async function(req, res, next) {
   let data = await db.collection('register').find({type:"farmer"}).toArray()
   res.render('admin/confirm_farmers',{adminroute:true,data})
-  
 });
 router.get('/review',ath, function(req, res, next) {
   res.render('admin/review',{adminroute:true})
@@ -133,16 +133,33 @@ router.post('/delete_post_farm_product/:id',function(req, res, next) {
   console.log(data);
   res.redirect('/admin/view_products')
 });
-router.get('/view_farmers',ath, function(req, res, next) {
-  res.render('admin/view_farmers',{adminroute:true})
+router.get('/notification',ath, function(req, res, next) {
+  res.render('admin/notification',{adminroute:true})
   
 });
-router.get('/view_workers',ath, function(req, res, next) {
-  res.render('admin/view_workers',{adminroute:true})
+router.post('/notification_post',ath, async function(req, res, next) {
+  await db.collection('notification').insertOne(req.body)
+  res.redirect('/admin/view_notification')
   
 });
-router.get('/view_booking',ath, function(req, res, next) {
-  res.render('admin/view_booking',{adminroute:true})
+router.get('/view_notification',ath, async function(req, res, next) {
+  let data = await db.collection('notification').find().toArray()
+  res.render('admin/view_notification',{adminroute:true,data})
+
+  
+  
+});
+router.get('/delete_post_noti/:id',ath, async function(req, res, next) {
+  let objectId=new ObjectId(req.params.id)
+  await db.collection('notification').deleteOne({_id:objectId})
+  res.redirect('/admin/view_notification')
+
+  
+  
+});
+router.get('/view_booking',ath, async function(req, res, next) {
+  let data=await db.collection('farmer_rent_booking').find().toArray()
+  res.render('admin/view_booking_rental',{adminroute:true,data})
   
 });
 router.get('/add_products',ath, function(req, res, next) {

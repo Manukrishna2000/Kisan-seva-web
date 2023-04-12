@@ -24,7 +24,12 @@ var usersRouter = require('./routes/users');
 var homeRouter=require('./routes/home');
 var hbs = require('express-handlebars');
 const nocache = require('nocache');
+const { handlebars } = require('hbs');
 
+
+handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 
 
 app.set('views', path.join(__dirname, 'views'));

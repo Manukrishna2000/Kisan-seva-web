@@ -1,19 +1,40 @@
-
-<form action="/user/cart_post" method="post">
+<div class="formbook">
+    
+<form action="/user/cart_post/{{data._id}}" method="post">
 <img src="/images/photos/{{data._id}}.jpg" class="b_image">
 <div class="booking">
 <input type="text" class="booking1" name="Name" value="{{data.Name}}" readonly><br>
-Price : <input type="text" class="booking1" name="Price" value="{{data.Price}} /kg" readonly ><br>
-Category : <input type="text" class="booking1" name="Category" value="{{data.Category}}" readonly><br>
+Price : <input type="number"  class="booking1" value="{{data.Price}}" name="Price" id="PRICE" readonly><br>
 Pincode : <input type="text" class="booking1" name="Pincode" value="{{data.Pincode}}" readonly><br>
+Available Stock: {{data.Stock}}
 {{!-- <input type="date"  class="form-control" placeholder="date"> --}}
-<input type="number" placeholder="quantity in kg" name="quantity"><br>
+<input type="number"  placeholder="Quantity in kg" name="Quantity" id="QTY" onkeyup="multiply()"><br>
 <br><textarea name="Address" placeholder="Address"></textarea><br><br>
-<input type="text" value="{{data1}}" name="userid">
+<input type="text" value="{{data.user_id}}" name="Farmer_id" hidden>
+<input type="text" value="{{data1}}" name="User_id" hidden>
+Total Amount
+<input type="number" name="Total" id="TOTAL">
 
-<input type="submit" value="Add to cart" class="button2">
+<input type="submit" value="Order" class="button2">
 </div></form>
-<div class="rating">
-    name     reviews<br>
-             ratings
 </div>
+<div>
+    {{!-- name     reviews<br>
+             ratings --}}
+</div>
+
+<script>
+
+  window.addEventListener('load',()=>{
+    multiply()
+  })
+function multiply()
+{
+  
+    a = Number(document.getElementById('QTY').value);
+    b = Number(document.getElementById('PRICE').value);
+    c = a * b;
+
+    document.getElementById('TOTAL').value=c;
+}
+</script>

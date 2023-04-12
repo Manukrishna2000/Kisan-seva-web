@@ -1,26 +1,38 @@
+<div class="work_request">
+  
+<a href="/worker/view_works" class="re">Accepted works</a><br>
+<hr>
+</div>
  <div class="work_request">Work Requests</div>
-    <div><form>
-    <datalist id="suggestions" >
-        <option>First option</option>
-        <option>Second Option</option>
+    <div>
+        <form action="/worker/pincode_purchase" method="post">
+     <datalist id="suggestions" >{{#each data}}
+     <option> {{this.Pincode}}</option>
+        {{/each}}
     </datalist>
-    <input  autoComplete="on" list="suggestions" class="data" placeholder="Pincode"/>
-    <input type="submit" value="search" class="search_button">
-</form></div><br><br>
+    <input  autoComplete="on" list="suggestions" name="pincode">
+    <input type="submit" value="search" class="search_button1">
+</form>
+    </div><br><br>
 <div class="work_body">
 <div class="container">
-  <div class="row">
       {{#each data}}
+  <div class="row">
+    <form action="/worker/accept_work/{{this._id}}" method="post">
     <div class="col-sm">
       <div class="card req row-sm" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">{{this.Type}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{this.Date}}</h6>
-    <p class="card-text">{{this.Address}}</p>
-    <p class="card-text">{{this.Pincode}}</p><br>
-    <p class="card-text">{{this.Contact}}</p><br>
-
-    <form action="/worker/accept_work/{{this._id}}" method="post"><input type="submit" class="search_button"></form>
+    <h5 class="card-title"><input type='text'value='{{this.Type}}' class="booking1" name="Type"></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><input type='text'value='{{this.Date}}' class="booking1" name="Date"></h6>
+    <p class="card-text"><input type='text'value='{{this.Address}}' class="booking1" name="Address"></p>
+    <p class="card-text"><input type='text'value='{{this.Pincode}}' class="booking1" name="Pincode"></p>
+    <p class="card-text"><input type='text'value='{{this.Contact}}' class="booking1" name="Contact">
+    <p class="card-text"><input type='number' placeholder="Add your Contact"   name="Worker_Contact">
+    <br><input type="submit" class="search_button">
+    
+    <input type='text' value="{{../data1}}" class="booking1" name="user_id" hidden></p><br>
+    <input type='text'value='{{this.user_id}}'  class="booking1" name="Farmer_id" hidden></p><br>
+    </form>
     </div>
   </div>
     </div>

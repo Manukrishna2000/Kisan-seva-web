@@ -38,8 +38,8 @@ color: white;
 
 }
 .content{
-  margin-left:200px;
-  margin-top: -28rem; 
+  margin-left: 252px;
+  margin-top: -28rem;
 }
 .rental{
 height: 400px;
@@ -99,6 +99,17 @@ width: 100px;
 height: 30px;
 border-radius: 20px;
 }
+.button8{
+  background-color: #000;
+    color: white;
+    border: none;
+    width: 80px;
+    height: 36px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 2rem;
+    margin-left: 5rem;
+  }
 body{
 padding: 0px;
 margin: 0px;
@@ -129,7 +140,7 @@ height: auto;
 }
 .fa{
 color: white;
-  padding: 10px 17px;
+padding: 9px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -137,19 +148,19 @@ color: white;
 }
 .fa:active{
 color: black;
-padding: 10px 17px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-margin-left: 6px;
+padding: 9px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 6px;
 }
 .fa:hover{
 color: black;
-padding: 10px 17px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-margin-left: 6px;
+padding: 9px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 6px;
 
 }
 .ad:link{
@@ -457,7 +468,9 @@ line-height: 3rem;
 margin-left: 2rem;
 margin-top: 2rem;
 font-size: 20px;
+text-align: left;
 font-family: 'Nunito', sans-serif;
+width: 16rem;
 }
 .cust{
   background-size: 100%;
@@ -910,6 +923,10 @@ border: none;
 
 /* ratingbar */
 
+
+
+
+
 *{
   margin: 0;
   padding: 0;
@@ -948,7 +965,7 @@ border: none;
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
-}
+} 
 
 
 

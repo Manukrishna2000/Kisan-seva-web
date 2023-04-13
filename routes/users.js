@@ -73,4 +73,13 @@ router.post('/cart_post/:id',async function(req,res,next){
   res.redirect('/user/orders')
 })
 
+router.post('/rating/:id',ath,async function(req,res,next){
+  console.log(req.body.rate);
+  let objectId=new ObjectId(req.params.id)
+  let data= await db.collection('farmer_products').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
+  console.log(data);
+  res.redirect('/farmer/view_work')
+})
+
+
 module.exports = router;

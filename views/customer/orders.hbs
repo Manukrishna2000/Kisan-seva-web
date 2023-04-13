@@ -1,7 +1,7 @@
 <div class="check">
     <h1>My orders</h1>
   </div>
-  <form>
+
 <div class="table table_cart">
 <table class="table ">
   <thead class="t_head_cart">
@@ -12,10 +12,11 @@
       <th scope="col">Quantity</th>
       <th scope="col">Address</th>
       <th scope="col">Total</th>
+      <th>Add Rating</th>
       <th scope="col"></th>
      
     </tr>
-  </thead>
+  </thead><form action="/customer/rating/{{this._id}}" method="post"></form>
   <tbody>{{#each data}}
     <tr>
       <td>{{this.Name}}</td>
@@ -24,9 +25,25 @@
       <td>{{this.Quantity}}</td>
       <td>{{this.Address}}</td>
       <td>{{this.Total}}</td>
+      <td><div class="rate">
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>
+  </td>
+  <td>
+
+  <input type="submit" class="button" value="Rate"></td>
 
     </tr>{{/each}}
-  </tbody>
+  </tbody></form>
 </table>
 
 

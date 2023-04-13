@@ -3,18 +3,12 @@
   <thead class="t_head">
         <tr>
       <th scope="col">Name</th>
-      <th scope="col">Wage</th>
+      <th scope="col">Price</th>
       <th scope="col">Category</th>
       <th scope="col">Pincode</th>
-      <th> Mon</th>
-      <th> Tue</th>
-      <th> Wed</th>
-      <th> Thu</th>
-      <th> Fri</th>
-      <th> Sat</th>
-      <th> Sun</th>
       <th scope="col">Date</th>
       <th scope="col">Address</th>
+      
      
 
       
@@ -24,17 +18,9 @@
     {{#each data}}
     <tr>
       <td>{{this.Name}}</td>
-      <td>{{this.Wage}}</td>
+      <td>{{this.Price}}</td>
       <td>{{this.Category}}</td>
       <td>{{this.Pincode}}</td>
-      <td>{{this.slot1}}</td>
-      <td>{{this.slot2}}</td>
-      <td>{{this.slot3}}</td>
-      <td>{{this.slot4}}</td>
-      <td>{{this.slot5}}</td>
-      <td>{{this.slot6}}</td>
-      <td>{{this.slot7}}</td>
-      <td>{{this.Date}}</td>
       <td>{{this.Address}}</td>
        </tr>{{/each}}
   </tbody>

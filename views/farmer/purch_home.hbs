@@ -11,7 +11,7 @@
     </div>
     </div>    
 </nav>
-<div class="filter">
+{{!-- <div class="filter">
     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
 </div>
 <div id="mobile-filter">
@@ -57,7 +57,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> --}}
 <section id="sidebar">
            <a href="/farmer/purchase" class="a"> <h6 class="p-1 border-bottom">Filter</h6> </a><br>
     <div>
@@ -91,7 +91,7 @@
                 <a href="/farmer/purch_booking/{{this._id}}"><img class="card-img-top" src="/images/photos/{{this._id}}.jpg" alt="Card image cap"></a>
                 <div class="card-body">
                   <p class="card-text">{{this.Name}}</p>
-                  <p>{{this.Wage}}</p>
+                  <p>Rs. {{this.Price}}</p>
                       
                 </div>   
               </div></div>   {{/each}}</div></div></section>

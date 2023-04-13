@@ -6,15 +6,11 @@
       <th scope="col">Wage</th>
       <th scope="col">Category</th>
       <th scope="col">Pincode</th>
-      <th> Mon</th>
-      <th> Tue</th>
-      <th> Wed</th>
-      <th> Thu</th>
-      <th> Fri</th>
-      <th> Sat</th>
-      <th> Sun</th>
+      <th> Slot</th>
+      
       <th scope="col">Date</th>
       <th scope="col">Address</th>
+      <th>Rating</th>
      
 
       
@@ -27,15 +23,51 @@
       <td>{{this.Wage}}</td>
       <td>{{this.Category}}</td>
       <td>{{this.Pincode}}</td>
-      <td>{{this.slot1}}</td>
-      <td>{{this.slot2}}</td>
-      <td>{{this.slot3}}</td>
-      <td>{{this.slot4}}</td>
-      <td>{{this.slot5}}</td>
-      <td>{{this.slot6}}</td>
-      <td>{{this.slot7}}</td>
+      {{#if slot1}}<td>{{this.slot1}}</td>{{/if}}
+      {{#if slot2}}<td>{{this.slot2}}</td>{{/if}}
+       {{#if slot3}}<td>{{this.slot3}}</td>{{/if}}
+       {{#if slot4}}<td>{{this.slot4}}</td>{{/if}}
+       {{#if slot5}}<td>{{this.slot5}}</td>{{/if}}
+       {{#if slot6}}<td>{{this.slot6}}</td>{{/if}}
+       {{#if slot7}}<td>{{this.slot7}}</td>{{/if}}
       <td>{{this.Date}}</td>
       <td>{{this.Address}}</td>
+       <td>
+
+         <div class="rate">
+  {{#if ../obj.RatingStatusFive  }}        
+    <input type="radio" checked id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusFour  }}
+    <input type="radio" checked id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <label for="star4" title="text">4 stars</label>
+    <label for="star4" title="text">4 stars</label>
+    <label for="star4" title="text">4 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusThree  }}
+    <input type="radio" checked disabled id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <label for="star3" title="text">3 stars</label>
+    <label for="star3" title="text">3 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusTwo  }}
+    <input type="radio" checked disabled id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <label for="star2" title="text">2 stars</label>
+  {{/if}}
+
+  {{#if ../obj.RatingStatusOne  }}
+    <input type="radio" checked disabled id="star1" name="rate" value="1" />
+    <label for="star1"  title="text">1 star</label>
+    <label for="star1"  title="text">1 star</label>
+  {{/if}}
+</div>
+      </td>
        </tr>{{/each}}
   </tbody>
 </table>

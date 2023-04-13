@@ -40,6 +40,14 @@ router.post('/delete_post/:id',function(req, res, next) {
   console.log(data);
   res.redirect('/farmer/view_product')
 });
+
+router.post('/delete_account/:id',function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  let data=db.collection('register').deleteOne({_id:objectId,Username:req.session.userid})
+  console.log(data);
+  res.redirect('/farmer/view_product')
+});
+
 router.post('/rentalbooking_post/:id',async function(req,res,next){
  let objectId=new ObjectId(req.params.id)
  let data= await db.collection('farmer_rent_booking').insertOne(req.body)
@@ -70,6 +78,15 @@ router.post('/rentalbooking_post/:id',async function(req,res,next){
   }
   res.redirect('/farmer/my_orders')
 });
+
+
+router.post('/purchase_booking_post/:id',async function(req,res,next){
+  let objectId=new ObjectId(req.params.id)
+   await db.collection('farmer_product_booking').insertOne(req.body)
+   res.redirect('/farmer')
+});
+
+
 // form actions
 
 /* GET home page. */
@@ -126,7 +143,8 @@ router.get('/booking/:id',  async function(req, res, next) {
 router.get('/purch_booking/:id',ath, async function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
   let data=await db.collection('admin_products').findOne({_id:objectId})
-  res.render('farmer/purch_book',{farmerroute:true,data});
+  let data1=req.session.userid
+  res.render('farmer/purch_book',{farmerroute:true,data,data1});
 });
 
 router.get('/category/:id',ath, async function(req, res, next) {
@@ -196,12 +214,37 @@ router.get('/my_orders',ath,async  function(req, res, next) {
   let data = await db.collection('farmer_rent_booking').find({userid:req.session.userid}).toArray()
   res.render('farmer/my_orders',{farmerroute:true,data});
 });
+
+
+
+router.get('/my_purchase_orders',ath,async  function(req, res, next) {
+  let data = await db.collection('farmer_product_booking').find({userid:req.session.userid}).toArray()
+  console.log(data);
+  res.render('farmer/purchase_orders',{farmerroute:true,data});
+});
+
 router.post('/rating/:id',ath,async function(req,res,next){
   console.log(req.body.rate);
   let objectId=new ObjectId(req.params.id)
   let data= await db.collection('Work_request_accept').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
   console.log(data);
   res.redirect('/farmer/view_work')
+})
+
+router.post('/rating_purchase/:id',ath,async function(req,res,next){
+  console.log(req.body.rate);
+  let objectId=new ObjectId(req.params.id)
+  let data= await db.collection('farmer_product_booking').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
+  console.log(data);
+  res.redirect('/farmer/my_purchase_orders')
+})
+
+router.post('/rating_rental/:id',ath,async function(req,res,next){
+  console.log(req.body.rate);
+  let objectId=new ObjectId(req.params.id)
+  let data= await db.collection('farmer_rent_booking').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
+  console.log(data);
+  res.redirect('/farmer/my_orders')
 })
 
 

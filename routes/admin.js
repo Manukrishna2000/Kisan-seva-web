@@ -153,13 +153,37 @@ router.get('/delete_post_noti/:id',ath, async function(req, res, next) {
   let objectId=new ObjectId(req.params.id)
   await db.collection('notification').deleteOne({_id:objectId})
   res.redirect('/admin/view_notification')
-
+  
   
   
 });
 router.get('/view_booking',ath, async function(req, res, next) {
   let data=await db.collection('farmer_rent_booking').find().toArray()
-  res.render('admin/view_booking_rental',{adminroute:true,data})
+  let obj={
+    RatingStatusOne:false,
+    RatingStatusTwo:false,
+  RatingStatusThree:false,
+  RatingStatusFour:false,
+  RatingStatusFive:false,
+   }
+   console.log(obj,'start');
+   if(data[0].Rating=='1'){
+    obj.RatingStatusOne=true
+   }else if(data[0].Rating=='2'){
+    obj.RatingStatusTwo=true
+   }else if(data[0].Rating=='3'){
+    obj.RatingStatusThree=true
+   }else if(data[0].Rating=='4'){
+    obj.RatingStatusFour=true
+   }else if(data[0].Rating=='5'){
+    obj.RatingStatusFive=true
+   }
+  res.render('admin/view_booking_rental',{adminroute:true,data,obj})
+  
+});
+router.get('/view_booking_purch',ath, async function(req, res, next) {
+  let data=await db.collection('farmer_product_booking').find().toArray()
+  res.render('admin/view_booking_purchase',{adminroute:true,data})
   
 });
 router.get('/add_products',ath, function(req, res, next) {

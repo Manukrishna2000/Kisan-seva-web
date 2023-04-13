@@ -10,7 +10,7 @@
         </ul>           
     </div>
     </div>    
-</nav>
+{{!-- </nav>
 <div class="filter">
     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
 </div>
@@ -54,16 +54,16 @@
             <div class="form-inline border rounded p-md-2 p-sm-1">
                 <input type="radio" name="type" id="notugly">
                 <label for="notugly" class="pl-1 pt-sm-0 pt-1">Not Ugly</label>
-            </div>
+            </div> --}}
         </form>
     </div>
 </div>
 <section id="sidebar">
-           <a href="/farmer/home" class="a"> <h6 class="p-1 border-bottom">Filter</h6> </a><br>
+           <a href="/farmer" class="a"> <h6 class="p-1 border-bottom">Filter</h6> </a><br>
     <div>
         <h6 class="p-1 border-bottom">Category</h6>
         <ul>{{#each data}}
-            <li><a href="/farmer/category/{{this._id}}">{{this.Category}}</a></li>
+            <li><a href="/farmer/category_rent/{{this._id}}">{{this.Category}}</a></li>
             {{/each}}
         </ul>
     </div>
@@ -72,7 +72,7 @@
         <p class="mb-2">Pincode</p>
         <ul class="list-group">
             
-    <form action="/farmer/pincode_purchase" method="post">
+    <form action="/farmer/pincode_rental" method="post">
      <datalist id="suggestions" >{{#each data}}
      <option> {{this.Pincode}}</option>
         {{/each}}
@@ -90,8 +90,9 @@
             <div class="card">
                 <a href="/farmer/booking/{{this._id}}"><img class="card-img-top" src="/images/photos/{{this._id}}.jpg" alt="Card image cap"></a>
                 <div class="card-body">
-                  <p class="card-text">{{this.Name}}</p>
-                  <p>{{this.Wage}}</p>
+                  <p class="card-text"><center>{{this.Name}}</p></center>
+                  <p>Rs. {{this.Wage}} per Hour</p>
                       
                 </div>   
               </div></div>   {{/each}}</div></div></section>
+

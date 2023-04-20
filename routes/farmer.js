@@ -226,7 +226,8 @@ router.get('/my_purchase_orders',ath,async  function(req, res, next) {
 router.post('/rating/:id',ath,async function(req,res,next){
   console.log(req.body.rate);
   let objectId=new ObjectId(req.params.id)
-  let data= await db.collection('Work_request_accept').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
+  
+  let data= await db.collection('Work_request_accept').updateOne({_id:objectId},{$set:req.body})
   console.log(data);
   res.redirect('/farmer/view_work')
 })

@@ -20,30 +20,8 @@ router.get('/',ath,async function(req, res, next) {
 router.get('/view_works',ath,async function(req, res, next) {
   // console.log(req.session.userid)
  let data= await db.collection('Work_request_accept').find({user_id:req.session.userid}).toArray()
- console.log(typeof data,'jhkhh');
- console.log(typeof data[0].Rating,'jhkhh');
- let obj={
-  RatingStatusOne:false,
-  RatingStatusTwo:false,
-RatingStatusThree:false,
-RatingStatusFour:false,
-RatingStatusFive:false,
- }
- console.log(obj,'start');
- if(data[0].Rating=='1'){
-  obj.RatingStatusOne=true
- }else if(data[0].Rating=='2'){
-  obj.RatingStatusTwo=true
- }else if(data[0].Rating=='3'){
-  obj.RatingStatusThree=true
- }else if(data[0].Rating=='4'){
-  obj.RatingStatusFour=true
- }else if(data[0].Rating=='5'){
-  obj.RatingStatusFive=true
- }
- console.log(obj,'last....');
-// if(data==='1')
-  res.render('worker/work_accept',{workroute:true,data,obj});
+ console.log(data);
+  res.render('worker/work_accept',{workroute:true,data});
 });
 
 router.post('/accept_work/:id',ath, async function(req, res, next) {

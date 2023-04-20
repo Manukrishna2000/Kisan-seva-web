@@ -830,6 +830,11 @@ width: 7rem;
 height: 30px;
 border-radius: 20px;
 }
+
+.raterev{
+  color: #5E902A;
+}
+
 .req{
   margin-left: 2rem;
   height: 15rem;

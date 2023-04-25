@@ -1,4 +1,6 @@
-
+{{#if st}}
+kjhjgjhb
+{{/if}}
 <form action="/farmer/rentalbooking_post/{{data._id}}" method="post">
 <img src="/images/photos/{{data._id}}.jpg" class="b_image">
 <div class="booking">
@@ -19,6 +21,7 @@ select slot<br>
   {{#if data.slot5}}<input class="form-check-input" type="checkbox" name="slot5" value="{{data.slot5}}" id="flexCheckDefault">{{data.slot5}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}
   {{#if data.slot6}}<input class="form-check-input" type="checkbox" name="slot6" value="{{data.slot6}}" id="flexCheckDefault">{{data.slot6}}<br>{{/if}}
 <br><textarea name="Address" placeholder="Address"></textarea><br><br>
+
 <input type="submit"  class="button2" value="book">
 </div>
 <input type="text" class="booking1" name="userid" value="{{data1}}" readonly hidden><br>

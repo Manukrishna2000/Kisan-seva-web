@@ -39,6 +39,13 @@ router.post('/rental_post', function(req, res, next) {
   res.redirect('/admin/view_rental')
   })});
 
+  router.post('/edit_post/:id',ath, async function(req, res, next) {
+    let objectId = new ObjectId(req.params.id)
+    // console.log(...update);
+    await db.collection('admin_products').updateOne({_id:objectId},{$set:req.body})
+    res.redirect('/admin/products');
+  });
+
 router.post('/confirm_farmer_post/:id', async function(req, res, next) {
  const objectId = new ObjectId(req.params.id)
  if(req.body.approve=='confirm'){
@@ -65,10 +72,29 @@ router.post('/confirm_worker_post/:id', async function(req, res, next) {
   res.redirect('/admin/view_rental')
 
 });
+router.post('/edit_post_rent/:id', async function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+ let data=await  db.collection('admin_rental').findOne({_id:objectId})
+  res.render('admin/edit_rental',{adminroute:true,data})
+});
+router.post('/edit_rental_post/:id',ath, async function(req, res, next) {
+  let objectId = new ObjectId(req.params.id)
+  console.log(req.body);
+  // console.log(...update);
+  await db.collection('admin_rental').updateOne({_id:objectId},{$set:req.body})
+  res.redirect('/admin/view_rental');
+});
 router.post('/delete_post_product/:id', function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
   db.collection('admin_products').deleteOne({_id:objectId})
   res.redirect('/admin/products')
+
+});
+router.post('/edit_post_product/:id', async function(req, res, next) {
+  const objectId = new ObjectId(req.params.id)
+  let data=await db.collection('admin_products').findOne({_id:objectId})
+  console.log(data);
+  res.render('admin/edit_products',{adminroute:true,data})
 
 });
 //end of form action
@@ -159,26 +185,8 @@ router.get('/delete_post_noti/:id',ath, async function(req, res, next) {
 });
 router.get('/view_booking',ath, async function(req, res, next) {
   let data=await db.collection('farmer_rent_booking').find().toArray()
-  let obj={
-    RatingStatusOne:false,
-    RatingStatusTwo:false,
-  RatingStatusThree:false,
-  RatingStatusFour:false,
-  RatingStatusFive:false,
-   }
-   console.log(obj,'start');
-   if(data[0].Rating=='1'){
-    obj.RatingStatusOne=true
-   }else if(data[0].Rating=='2'){
-    obj.RatingStatusTwo=true
-   }else if(data[0].Rating=='3'){
-    obj.RatingStatusThree=true
-   }else if(data[0].Rating=='4'){
-    obj.RatingStatusFour=true
-   }else if(data[0].Rating=='5'){
-    obj.RatingStatusFive=true
-   }
-  res.render('admin/view_booking_rental',{adminroute:true,data,obj})
+  console.log(data);
+  res.render('admin/view_booking_rental',{adminroute:true,data})
   
 });
 router.get('/view_booking_purch',ath, async function(req, res, next) {

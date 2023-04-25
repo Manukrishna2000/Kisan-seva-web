@@ -28,7 +28,8 @@
       {{this.slot4}}
       {{this.slot5}}
       {{this.slot6}}</td>
-      <td><button class="button">Edit</button><br><br>
+      <td>      <form action="/admin/edit_post_rent/{{this._id}}" method="post"><input class="button" type="submit" value="Edit"><br><br></a></form>
+<br><br>
       <form action="/admin/delete_post/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td>
     </tr>{{/each}}
     

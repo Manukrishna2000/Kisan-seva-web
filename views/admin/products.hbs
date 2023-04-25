@@ -21,8 +21,9 @@
       <td><img src="/images/photos/{{this._id}}.jpg" height="200px" width="300px" alt=""> </td>
       <td>{{this.Pincode}}</td>
       <td></td>
-      <td><button class="button">Edit</button><br><br>
-      <form action="/admin/delete_post_product/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td>
+      <td>
+      <form action="/admin/delete_post_product/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form>
+      <form action="/admin/edit_post_product/{{this._id}}" method="post"><input class="button" type="submit" value="Edit"><br><br></a></form></td>
     </tr>{{/each}}
 
   </tbody>

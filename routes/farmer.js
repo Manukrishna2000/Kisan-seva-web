@@ -235,16 +235,17 @@ router.post('/rating/:id',ath,async function(req,res,next){
 router.post('/rating_purchase/:id',ath,async function(req,res,next){
   console.log(req.body.rate);
   let objectId=new ObjectId(req.params.id)
-  let data= await db.collection('farmer_product_booking').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
+  let data= await db.collection('farmer_product_booking').updateOne({_id:objectId},{$set:req.body})
   console.log(data);
   res.redirect('/farmer/my_purchase_orders')
 })
 
 router.post('/rating_rental/:id',ath,async function(req,res,next){
-  console.log(req.body.rate);
   let objectId=new ObjectId(req.params.id)
-  let data= await db.collection('farmer_rent_booking').updateOne({_id:objectId},{$set:{Rating:req.body.rate}})
+  console.log(objectId);
+  let data=await db.collection('farmer_rent_booking').updateOne({_id:objectId},{$set:req.body})
   console.log(data);
+  
   res.redirect('/farmer/my_orders')
 })
 

@@ -105,9 +105,6 @@
   {{/if}}
   </div>
   </td>
-  <td>
-
-  <input type="submit" class="button" value="Rate"></td>
       </form>
       {{/each}}
 </table>
@@ -116,18 +113,6 @@
 </div>
 </div>
 
-<script>
- const ratings = document.getElementsByName('rate');
 
-// loop through all radio buttons and add an event listener to each
-ratings.forEach(function(rating) {
-    rating.addEventListener('click', function() {
-        // get the value of the selected radio button
-        const selectedRating = this.value;
-        console.log(selectedRating);
-    });
-    
-});
-</script>
 
 

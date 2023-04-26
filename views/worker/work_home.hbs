@@ -22,12 +22,12 @@
     <div class="col-sm">
       <div class="card req row-sm" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><input type='text'value='{{this.Type}}' class="booking1" name="Type"></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><input type='text'value='{{this.Date}}' class="booking1" name="Date"></h6>
-    <p class="card-text"><input type='text'value='{{this.Address}}' class="booking1" name="Address"></p>
-    <p class="card-text"><input type='text'value='{{this.Pincode}}' class="booking1" name="Pincode"></p>
+    <h5 class="card-title"><input type='text'value='{{this.Type}}' readonly class="booking1" name="Type"></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><input type='text'value='{{this.Date}}' readonly class="booking1" name="Date"></h6>
+    <p class="card-text"><input type='text'value='{{this.Address}}' class="booking1" readonly name="Address"></p>
+    <p class="card-text"><input type='text'value='{{this.Pincode}}' class="booking1" readonly name="Pincode"></p>
     <p class="card-text"><input type='text'value='{{this.Contact}}' class="booking1" name="Contact">
-    <p class="card-text"><input type='number' placeholder="Add your Contact"   name="Worker_Contact">
+    <p class="card-text"><input type='number' placeholder="Add your Contact" required   name="Worker_Contact">
     <br><input type="submit" class="search_button">
     
     <input type='text' value="{{../data1}}" class="booking1" name="user_id" hidden></p><br>

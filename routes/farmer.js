@@ -106,7 +106,8 @@ router.get('/purchase',ath,  async function(req, res, next) {
 
 router.get('/work_request',ath,  function(req, res, next) {
   let data=req.session.userid
-  res.render('farmer/work_request',{farmerroute:true,data});
+  let cdate=new Date().toISOString().split('T')[0];
+  res.render('farmer/work_request',{farmerroute:true,data,cdate});
 });
 router.get('/sell_product',ath,  function(req, res, next) {
   let data=req.session.userid
@@ -195,6 +196,11 @@ router.post('/farm_edit_post/:id',ath, async function(req, res, next) {
   };
   // console.log(...update);
   await db.collection('farmer_products').updateOne({_id:objectId},{$set:data})
+  if(req.files){
+    let photo=req.files.Image
+    console.log(photo);
+    photo.mv('public/images/photos/'+objectId+'.jpg') 
+  }
   res.redirect('/farmer/view_product');
 });
 

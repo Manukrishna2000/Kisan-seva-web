@@ -43,6 +43,12 @@ router.post('/rental_post', function(req, res, next) {
     let objectId = new ObjectId(req.params.id)
     // console.log(...update);
     await db.collection('admin_products').updateOne({_id:objectId},{$set:req.body})
+    console.log(req.files);
+    if(req.files){
+      let photo=req.files.Image
+
+      photo.mv('public/images/photos/'+objectId+'.jpg')  
+    }
     res.redirect('/admin/products');
   });
 
@@ -82,6 +88,12 @@ router.post('/edit_rental_post/:id',ath, async function(req, res, next) {
   console.log(req.body);
   // console.log(...update);
   await db.collection('admin_rental').updateOne({_id:objectId},{$set:req.body})
+  console.log(req.files);
+  if(req.files){
+    let photo=req.files.Image
+
+    photo.mv('public/images/photos/'+objectId+'.jpg')  
+  }
   res.redirect('/admin/view_rental');
 });
 router.post('/delete_post_product/:id', function(req, res, next) {

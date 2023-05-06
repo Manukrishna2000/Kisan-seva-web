@@ -4,11 +4,11 @@ kjhjgjhb
 <form action="/farmer/rentalbooking_post/{{data._id}}" method="post">
 <img src="/images/photos/{{data._id}}.jpg" class="b_image">
 <div class="booking">
-<input type="text" class="booking1" name="Name" value="{{data.Name}}" readonly><br>
-<input type="text" class="booking1" name="Wage" value="{{data.Wage}}" readonly><br>
-<input type="text" class="booking1" name="Category" value="{{data.Category}}"readonly><br>
+<input type="text" required  class="booking1" name="Name" value="{{data.Name}}" readonly><br>
+<input type="text" required  class="booking1" name="Wage" value="{{data.Wage}}" readonly><br>
+<input type="text" required  class="booking1" name="Category" value="{{data.Category}}"readonly><br>
 {{!-- Description<br> --}}
-<input type="text" class="booking1" name="Pincode" value="{{data.Pincode}}" readonly><br>
+<input type="text" required  class="booking1" name="Pincode" value="{{data.Pincode}}" readonly><br>
 select slot<br>
 
 
@@ -24,7 +24,7 @@ select slot<br>
 
 <input type="submit"  class="button2" value="book">
 </div>
-<input type="text" class="booking1" name="userid" value="{{data1}}" readonly hidden><br>
+<input type="text" required  class="booking1" name="userid" value="{{data1}}" readonly hidden><br>
 
 </form>
 <div class="rating">

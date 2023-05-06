@@ -54,7 +54,7 @@ router.post('/customer_register_post', async function(req, res, next) {
     }
     else{
     fn.register(req.body,(callback)=>{
- res.redirect('/login')})
+ res.redirect('/login',)})
  }
 });
    
@@ -67,9 +67,11 @@ router.post('/login_post',async function(req, res, next) {
   console.log(req.body);
   let data = await db.collection('register').findOne({Username:req.body.Username,Password:req.body.Password}).then((response)=>{
     console.log(response);
-    if(response==null){
-      
+    if (response === null) {
+    let er= req.session.error = 'Incorrect username or password!!';
+     res.render('home/login',{homeroute:true,er})
     }
+    
    
     else if(response.Username=='admin' && response.Password=='admin'){
       
@@ -95,7 +97,9 @@ router.post('/login_post',async function(req, res, next) {
         res.redirect('/user')
       }
       else{
-        res.write('invalid')
+        console.log('invalid');
+   
+
       }
     })
    
@@ -156,9 +160,9 @@ router.get('/cust_register', function(req, res, next) {
   res.render('home/cust_register',{register:true,err})
 });
 router.get('/login', function(req, res, next) {
-  let er = req.session.error
-  console.log(req.session.error,'error session');
+  let er = req.session.ierror
+  console.log(req.session.ierror,'error session');
   console.log(Error);
-  res.render('home/login',{homeroute:true,error:req.session.error})
+  res.render('home/login',{homeroute:true,er})
 });
 module.exports = router;

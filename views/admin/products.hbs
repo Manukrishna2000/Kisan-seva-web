@@ -1,6 +1,18 @@
 <a href="/admin/add_products"><button class="button1">ADD</button></a>
 <br><br>
 
+
+
+            
+    <form action="/admin/view_products_search" method="post">
+     <datalist id="suggestions" aria-placeholder="select category" >{{#each data}}
+     <option> {{this.Category}}</option>
+        {{/each}}
+    </datalist>
+    <input  autoComplete="on" list="suggestions" name="Category">
+    <input type="submit" value="search" class="search_button1">
+</form>
+
 <table class="table .table1">
   <thead class="t_head">
     <tr>

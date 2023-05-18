@@ -28,7 +28,7 @@ router.post('/product_post', function(req, res, next) {
     let photo=req.files.Image
     console.log(req.files);
     photo.mv('public/images/photos/'+callback.insertedId+'.jpg')  
-    res.redirect('/admin/view_products')
+    res.redirect('/admin/products')
     })});
 
 router.post('/rental_post', function(req, res, next) {
@@ -39,7 +39,7 @@ router.post('/rental_post', function(req, res, next) {
   res.redirect('/admin/view_rental')
   })});
 
-  router.post('/edit_post/:id',ath, async function(req, res, next) {
+  router.post('/edit_post/:id',async function(req, res, next) {
     let objectId = new ObjectId(req.params.id)
     // console.log(...update);
     await db.collection('admin_products').updateOne({_id:objectId},{$set:req.body})
@@ -56,8 +56,8 @@ router.post('/confirm_farmer_post/:id', async function(req, res, next) {
  const objectId = new ObjectId(req.params.id)
  if(req.body.approve=='confirm'){
   await db.collection('register').updateOne({_id:objectId},{$set:{status:'confirm'}})}
-  else if(req.body.approve=='reject'){
-    await db.collection('register').updateOne({_id:objectId},{$set:{status:'reject'}})
+  else if(req.body.approve=='disable'){
+    await db.collection('register').updateOne({_id:objectId},{$set:{status:'disabled'}})
   }
   console.log(res);
   res.redirect('/admin/confirm_farmers')
@@ -67,8 +67,8 @@ router.post('/confirm_worker_post/:id', async function(req, res, next) {
   const objectId = new ObjectId(req.params.id) 
   if(req.body.approve=='confirm'){
     await db.collection('register').updateOne({_id:objectId},{$set:{status:'confirm'}})}
-    else if(req.body.approve=='reject'){
-      await db.collection('register').updateOne({_id:objectId},{$set:{status:'reject'}})
+    else if(req.body.approve=='disable'){
+      await db.collection('register').updateOne({_id:objectId},{$set:{status:'disabled'}})
     }
     res.redirect('/admin/confirm_workers')
  });
@@ -147,6 +147,13 @@ router.get('/view_rental',ath, async function(req, res, next) {
   res.render('admin/view_rental',{adminroute:true,data})
   
 });
+
+router.post('/view_rental_search',ath, async function(req, res, next) {
+  console.log(req.body);
+  let data = await db.collection('admin_rental').find({Category:req.body.Category}).toArray()
+  res.render('admin/view_rental',{adminroute:true,data})
+  
+});
 router.get('/confirm_workers',ath, async function(req, res, next) {
   let data = await db.collection('register').find({type:"worker"}).toArray()
   res.render('admin/confirm_workers',{adminroute:true,data})
@@ -163,6 +170,13 @@ router.get('/review',ath, function(req, res, next) {
 router.get('/view_products',ath, async function(req, res, next) {
   let data=await db.collection('farmer_products').find().toArray()
   res.render('admin/view_products',{adminroute:true,data})
+  
+});
+router.post('/view_products_search',ath, async function(req, res, next) {
+  console.log(req.body); 
+  let data=await db.collection('admin_products').find({Category:req.body.Category}).toArray()
+  console.log(data);
+  res.render('admin/products',{adminroute:true,data})
   
 });
 router.post('/delete_post_farm_product/:id',function(req, res, next) {
@@ -198,6 +212,9 @@ router.get('/delete_post_noti/:id',ath, async function(req, res, next) {
 router.get('/view_booking',ath, async function(req, res, next) {
   let data=await db.collection('farmer_rent_booking').find().toArray()
   console.log(data);
+
+
+  
   res.render('admin/view_booking_rental',{adminroute:true,data})
   
 });
@@ -216,6 +233,9 @@ router.get('/products',ath, async function(req, res, next) {
   res.render('admin/products',{adminroute:true,data})
   
 });
+
+
+
 module.exports = router;
 
 

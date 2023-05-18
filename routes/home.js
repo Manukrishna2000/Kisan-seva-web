@@ -44,18 +44,21 @@ router.post('/worker_register_post', async function(req, res, next) {
 
 
 router.post('/customer_register_post', async function(req, res, next) {
-  let user_c=await db.collection('register').findOne({type:'customer',Username:req.body.Username})
-  console.log(user_c);
-  if(user_c==null)
-  {
-    // console.log(response);
-    // if(req.body.Username==response.Username){
-      
-    }
-    else{
+  let name=await db.collection('register').findOne({type:'customer',Username:req.body.Username})
+  if(name){
+    req.session.ERor="username already exist"
+      res.redirect('/cust_register')
+    
+  }
+  else{
     fn.register(req.body,(callback)=>{
- res.redirect('/login',)})
- }
+      let ph=req.files.Photos
+      let id_proof=req.files.Id_proofs
+        console.log(req.files);
+        ph.mv('public/images/user_photo/'+callback.insertedId+'.jpg')  
+        id_proof.mv('public/images/id_proof/'+callback.insertedId+'.jpg')
+      res.redirect('/login')})
+  }
 });
    
     
@@ -73,7 +76,7 @@ router.post('/login_post',async function(req, res, next) {
     }
     
    
-    else if(response.Username=='admin' && response.Password=='admin'){
+    else if(response.Username=='admin' && response.Password=='admin@2000'){
       
       req.session.loginStatus = true
       res.redirect('/admin')

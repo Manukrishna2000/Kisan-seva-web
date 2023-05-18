@@ -27,7 +27,18 @@ router.post('/farm_product_post',ath, function(req, res, next) {
 });
 
 router.post('/work_request_post',ath, function(req, res, next) {
-  fn.work(req.body)
+  let obj={
+    Type:req.body.Type,
+    Date:req.body.Date,
+    Address:req.body.Address,
+    Pincode:req.body.Pincode,
+    Contact:req.body.Contact,
+    Worker_Nos:parseInt( req.body.Worker_Nos),
+    status:req.body.status,
+    user_id:req.body.user_id
+
+  }
+  fn.work(obj)
   // let data=req.session.userid
   console.log(req.session.userid);
   res.redirect('/farmer/work_request')
@@ -236,6 +247,13 @@ router.post('/rating/:id',ath,async function(req,res,next){
   let data= await db.collection('Work_request_accept').updateOne({_id:objectId},{$set:req.body})
   console.log(data);
   res.redirect('/farmer/view_work')
+})
+router.post('/status/:id',ath,async function(req,res,next){
+  console.log(req.body.rate);
+  let objectId=new ObjectId(req.params.id)
+  let data= await db.collection('cust_order').updateOne({_id:objectId},{$set:req.body})
+  console.log(data);
+  res.redirect('/farmer/view_orders')
 })
 
 router.post('/rating_purchase/:id',ath,async function(req,res,next){

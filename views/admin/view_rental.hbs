@@ -1,6 +1,15 @@
 <a href="/admin/rental"><button class="button1">ADD</button></a>
 <br><br>
 
+            
+    <form action="/admin/view_rental_search" method="post">
+     <datalist id="suggestions" >{{#each data}}
+     <option value="{{this.Category}}"> {{this.Category}}</option>
+        {{/each}}
+    </datalist>
+    <input  autoComplete="on" list="suggestions" name="Category">
+    <input type="submit" value="search" class="search_button1">
+</form>
 <table class="table .table1">
   <thead class="t_head">
     <tr>

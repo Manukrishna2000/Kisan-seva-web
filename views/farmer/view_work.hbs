@@ -7,8 +7,10 @@
       <th scope="col">Address</th>
       <th scope="col">Date</th>
       <th scope="col">Worker Contact</th>
-      <th scope="col">Status</th>
-      <th scope="col">Add Reviews</th>
+      <th scope="col">Worker Required</th>
+      {{!-- <th scope="col">Status</th> --}}
+      <th scope="col">Add Rating</th>
+      <tH></tH>
       <tH></tH>
     </tr>
   </thead>
@@ -20,27 +22,94 @@
       <td>{{this.Address}}</td>
       <td>{{this.Date}}</td>
       <td>{{this.Worker_Contact}}</td>
-        <td>{{this.status}}</td>
-        <td>
+      <td>{{this.Worker_Nos}}</td>
+        {{!-- <td>{{this.status}}</td> --}}
+        
 
 
         
         <td><div class="rate">
-    <input type="radio" id="" name="rate" value="5" />
-    <label for="star5" title="text">5 stars</label>
-    <input type="radio" id="" name="rate" value="4" />
-    <label for="star4" title="text">4 stars</label>
-    <input type="radio" id="" name="rate" value="3" />
-    <label for="star3" title="text">3 stars</label>
-    <input type="radio" id="" name="rate" value="2" />
-    <label for="star2" title="text">2 stars</label>
-    <input type="radio" id="" name="rate" value="1" />
-    <label for="star1" title="text">1 star</label>
+       {{#if this.rate5}}
+    <input type="radio" id="{{this._id}}-star5" checked disabled name="rate5" value="5" />
+    <label for="{{this._id}}-star5" title="text">5 stars</label>
+    <input type="radio" id="{{this._id}}-star4"  name="rate4" value="4" />
+    <label for="{{this._id}}-star4" title="text">4 stars</label>
+    <input type="radio" id="{{this._id}}-star3" name="rate3" value="3" />
+    <label for="{{this._id}}-star3" title="text">3 stars</label>
+    <input type="radio" id="{{this._id}}-star2" name="rate2" value="2" />
+    <label for="{{this._id}}-star2" title="text">2 stars</label>
+    <input type="radio" id="{{this._id}}-star1" name="rate1" value="1" />
+    <label for="{{this._id}}-star1" title="text">1 star</label>
+      
+  
+  
+       {{else if this.rate4}}
+    <input type="radio" id="{{this._id}}-star5"  name="rate5" value="5" />
+    <label for="{{this._id}}-star5" title="text">5 stars</label>
+    <input type="radio" id="{{this._id}}-star4" checked disabled name="rate4" value="4" />
+    <label for="{{this._id}}-star4" title="text">4 stars</label>
+    <input type="radio" id="{{this._id}}-star3" name="rate3" value="3" />
+    <label for="{{this._id}}-star3" title="text">3 stars</label>
+    <input type="radio" id="{{this._id}}-star2" name="rate2" value="2" />
+    <label for="{{this._id}}-star2" title="text">2 stars</label>
+    <input type="radio" id="{{this._id}}-star1" name="rate1" value="1" />
+    <label for="{{this._id}}-star1" title="text">1 star</label>
+    
+  
+   {{else if this.rate3}}
+    <input type="radio" id="{{this._id}}-star5"  name="rate5" value="5" />
+    <label for="{{this._id}}-star5" title="text">5 stars</label>
+    <input type="radio" id="{{this._id}}-star4"  name="rate4" value="4" />
+    <label for="{{this._id}}-star4" title="text">4 stars</label>
+    <input type="radio" id="{{this._id}}-star3" checked disabled name="rate3" value="3" />
+    <label for="{{this._id}}-star3" title="text">3 stars</label>
+    <input type="radio" id="{{this._id}}-star2" name="rate2" value="2" />
+    <label for="{{this._id}}-star2" title="text">2 stars</label>
+    <input type="radio" id="{{this._id}}-star1" name="rate1" value="1" />
+    <label for="{{this._id}}-star1" title="text">1 star</label>
+ 
+   {{else if this.rate2}}
+    <input type="radio" id="{{this._id}}-star5"  name="rate5" value="5" />
+    <label for="{{this._id}}-star5" title="text">5 stars</label>
+    <input type="radio" id="{{this._id}}-star4"  name="rate4" value="4" />
+    <label for="{{this._id}}-star4" title="text">4 stars</label>
+    <input type="radio" id="{{this._id}}-star3"  name="rate3" value="3" />
+    <label for="{{this._id}}-star3" title="text">3 stars</label>
+    <input type="radio" id="{{this._id}}-star2" checked disabled name="rate2" value="2" />
+    <label for="{{this._id}}-star2" title="text">2 stars</label>
+    <input type="radio" id="{{this._id}}-star1" name="rate1" value="1" />
+    <label for="{{this._id}}-star1" title="text">1 star</label>
+
+   {{else if this.rate}}
+    <input type="radio" id="{{this._id}}-star5"  name="rate5" value="5" />
+    <label for="{{this._id}}-star5" title="text">5 stars</label>
+    <input type="radio" id="{{this._id}}-star4"  name="rate4" value="4" />
+    <label for="{{this._id}}-star4" title="text">4 stars</label>
+    <input type="radio" id="{{this._id}}-star3" name="rate3" value="3" />
+    <label for="{{this._id}}-star3" title="text">3 stars</label>
+    <input type="radio" id="{{this._id}}-star2"  name="rate2" value="2" />
+    <label for="{{this._id}}-star2" title="text">2 stars</label>
+    <input type="radio" id="{{this._id}}-star1" checked disabled name="rate1" value="1" />
+    <label for="{{this._id}}-star1" title="text">1 star</label>
+    {{else}}
+  <input type="radio" id="{{this._id}}-star5"  name="rate5" value="5" />
+    <label for="{{this._id}}-star5" title="text">5 stars</label>
+    <input type="radio" id="{{this._id}}-star4"  name="rate4" value="4" />
+    <label for="{{this._id}}-star4" title="text">4 stars</label>
+    <input type="radio" id="{{this._id}}-star3" name="rate3" value="3" />
+    <label for="{{this._id}}-star3" title="text">3 stars</label>
+    <input type="radio" id="{{this._id}}-star2"  name="rate2" value="2" />
+    <label for="{{this._id}}-star2" title="text">2 stars</label>
+    <input type="radio" id="{{this._id}}-star1" name="rate1" value="1" />
+    <label for="{{this._id}}-star1" title="text">1 star</label>
+    <td>
+  <input type="submit" class="button" value="Rate"></td>
+  {{/if}}
   </div>
   </td>
   <td>
 
-  <input type="submit" class="button" value="Rate"></td>
+
       </form>
 
 <!-- rating.js file -->

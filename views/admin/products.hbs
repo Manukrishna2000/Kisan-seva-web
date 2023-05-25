@@ -1,6 +1,19 @@
 <a href="/admin/add_products"><button class="button1">ADD</button></a>
 <br><br>
 
+
+
+            
+    <form action="/admin/view_products_search" method="post">
+    <datalist id="suggestions" >{{#each data1}}
+      {{this}}
+     <option value="{{this}}"> {{this}}</option>
+        {{/each}}
+    </datalist>
+    <input  autoComplete="on" list="suggestions" name="Category">
+    <input type="submit" value="search" class="search_button1">
+</form>
+
 <table class="table .table1">
   <thead class="t_head">
     <tr>
@@ -21,8 +34,9 @@
       <td><img src="/images/photos/{{this._id}}.jpg" height="200px" width="300px" alt=""> </td>
       <td>{{this.Pincode}}</td>
       <td></td>
-      <td><button class="button">Edit</button><br><br>
-      <form action="/admin/delete_post_product/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td>
+      <td>
+      <form action="/admin/delete_post_product/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form>
+      <form action="/admin/edit_post_product/{{this._id}}" method="post"><input class="button" type="submit" value="Edit"><br><br></a></form></td>
     </tr>{{/each}}
 
   </tbody>

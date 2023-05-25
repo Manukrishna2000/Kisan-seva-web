@@ -8,8 +8,8 @@
            <a href="/user" class="a"> <h6 class="p-1 border-bottom">Filter</h6> </a><br>
     <div>
         <h6 class="p-1 border-bottom">Category</h6>
-        <ul>{{#each data}}
-            <li><a href="/user/category/{{this._id}}">{{this.Category}}</a></li>
+        <ul>{{#each data1}}
+            <li><a href="/user/category/{{this}}">{{this}}</a></li>
             {{/each}}
         </ul>
     </div>
@@ -19,8 +19,8 @@
         <ul class="list-group">
             
     <form action="/user/pincode_purchase" method="post">
-     <datalist id="suggestions" >{{#each data}}
-     <option> {{this.Pincode}}</option>
+     <datalist id="suggestions" >{{#each data2}}
+     <option> {{this}}</option>
         {{/each}}
     </datalist>
     <input  autoComplete="on" list="suggestions" name="pincode">

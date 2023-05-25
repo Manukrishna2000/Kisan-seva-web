@@ -9,7 +9,9 @@
       <th scope="col">Quantity</th>
       <th scope="col">Address</th>
       <th scope="col">Total</th>
+      <th scope="col">Status</th>
       <th scope="col"></th>
+      <th></th>
      
     </tr>
   </thead>
@@ -21,13 +23,19 @@
       <td>{{this.Quantity}}</td>
       <td>{{this.Address}}</td>
       <td>{{this.Total}}</td>
+      <td>{{this.Status}}</td>
 
-      {{!-- <td><select>
-        <option>Delivered</option>
-        <option>Processings</option>
+                    <form action="/farmer/status/{{this._id}}" method="post">
+      <td>
+          <input type="text" required  class="form-control"  id=""  required name="Status" placeholder="Status">
+
         
       </select></td>
-                  <td><button class="button">Update</button><br><br> --}}
+
+                  <td>
+
+                    <input type="submit" class="button" value="update"><br><br>
+                    </form>
     </tr>{{/each}}
   </tbody>
 </table>

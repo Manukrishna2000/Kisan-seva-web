@@ -3,19 +3,19 @@
 <div class="rental"><br><br>
     <div class="rent">
   <div class="form-group">
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="Name" placeholder="Name">
+    <input type="text" required  class="form-control"  id=""  name="Name" required placeholder="Name">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="Price" placeholder="Price">
+    <input type="text" required  class="form-control"  id=""  name="Price" required placeholder="Price">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="Category" placeholder="Category">
+    <input type="text" required  class="form-control"  id=""  name="Category" required placeholder="Category">
   </div>
   <div class="form-group">
-    <input type="file" class="form-control" id="" aria-describedby="emailHelp" name="Image" placeholder="image">
+    <input type="file" class="form-control"  id=""  name="Image" required placeholder="image">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp"  name="Pincode" placeholder="pincode">
+    <input type="text" required  class="form-control"  id=""  required pattern="[0-9]{6}" title="Enter a valid 6-digit pincode" name="Pincode" value="{{data.Pincode}}"  name="Pincode" placeholder="pincode" pattern=".{6,}" title="must contain atleast 6 numbers">
   </div>
   
   <div class="form-group">

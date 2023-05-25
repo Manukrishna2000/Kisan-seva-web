@@ -24,7 +24,7 @@
       <td><img src="/images/id_proof/{{this._id}}.jpg" class="pro"><br></td>
       <td>{{this.status}}</td>
       <td><form action="/admin/confirm_worker_post/{{this._id}}" method="post"><input class="button" type="submit" name="approve" value="confirm"><br><br></a></form>
-      <form action="/admin/confirm_worker_post/{{this._id}}" method="post"><input class="button" type="submit" name="approve" value="reject"><br><br></a></form></td>
+      <form action="/admin/confirm_worker_post/{{this._id}}" method="post"><input class="button" type="submit" name="approve" value="disable"><br><br></a></form></td>
     </tr>{{/each}}
    
   </tbody>

@@ -3,25 +3,28 @@
 <div class="farmform"><br><br>
     <div class="rent">
   <div class="form-group">
-    <input type="text" class="form-control" id="" name="Type" aria-describedby="emailHelp" placeholder="work type">
+    <input type="text" required  class="form-control" id="" name="Type" aria-describedby="emailHelp"required placeholder="work type">
   </div>
   <div class="form-group">
-    <input type="date" class="form-control" id=""  name="Date" aria-describedby="emailHelp" placeholder="Date">
+    <input type="date" class="form-control" id="datepicker1"  name="Date" aria-describedby="emailHelp"  required placeholder="Date">
   </div>
   <div class="form-group">
-    <input type="textarea" class="form-control" name="Address" id="" aria-describedby="emailHelp" placeholder="Address">
+    <input type="textarea" class="form-control" name="Address"  id=""  required placeholder="Address">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="" name="Pincode" aria-describedby="emailHelp" placeholder="Pincode">
+    <input type="text" required  class="form-control" id="" name="Pincode" aria-describedby="emailHelp" required pattern="[0-9]{6}" title="Enter a valid 6-digit pincode" name="Pincode" value="{{data.Pincode}}" placeholder="pincode" pattern=".{6,}" title="must contain atleast 6 numbers">
   </div>
   <div class="form-group">
-    <input type="number" class="form-control" name="Contact" id="" aria-describedby="emailHelp" placeholder="Contact">
+    <input type="tel" class="form-control" name="Contact"  id=""  required placeholder="Contact" pattern="[0-9]{10}" title="enter valid number">
+  </div>
+   <div class="form-group">
+    <input type="number" class="form-control" name="Worker_Nos"  id=""  required placeholder="Number of Workers">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" name="status" id="" aria-describedby="emailHelp" value="pending" hidden>
+    <input type="text" required  class="form-control" name="status"  id=""  value="pending" hidden>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" name="user_id" id="" aria-describedby="emailHelp" value="{{data}}" hidden>
+    <input type="text" required  class="form-control" name="user_id"  id=""  value="{{data}}" hidden>
   </div>
  
   <div class="form-group">
@@ -31,3 +34,6 @@
   </div>
 </div>
 </form>
+<script>
+	datepicker1.min=new Date().toISOString().split("T")[0];
+</script>

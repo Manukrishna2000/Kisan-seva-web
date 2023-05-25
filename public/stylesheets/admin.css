@@ -424,12 +424,12 @@ height: fit-content;
 border-radius: 20px;
 }
 .rating{
-box-shadow: -4px 4px 6px 0px;
-  width: 32rem;
-  height: 4rem;
-  border: 2rem;
-  margin-left: 33rem;
-  margin-top: 4rem;
+  width: -3rem;
+    height: -2rem;
+    border: 2rem;
+    margin-left: 14rem;
+    top: 1rem;
+    position: relative;
 }
 .fa{
 color: white;
@@ -830,6 +830,11 @@ width: 7rem;
 height: 30px;
 border-radius: 20px;
 }
+
+.raterev{
+  color: #5E902A;
+}
+
 .req{
   margin-left: 2rem;
   height: 15rem;
@@ -935,6 +940,7 @@ border: none;
   float: left;
   height: 46px;
   margin-top: -14px;
+  width:10rem;
 }
 .rate:not(:checked) > input {
   position:absolute;

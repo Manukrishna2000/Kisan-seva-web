@@ -1,6 +1,16 @@
 <a href="/admin/rental"><button class="button1">ADD</button></a>
 <br><br>
 
+            
+    <form action="/admin/view_rental_search" method="post">
+     <datalist id="suggestions" >{{#each data1}}
+      {{this}}
+     <option value="{{this}}"> {{this}}</option>
+        {{/each}}
+    </datalist>
+    <input  autoComplete="on" list="suggestions" name="Category">
+    <input type="submit" value="search" class="search_button1">
+</form>
 <table class="table .table1">
   <thead class="t_head">
     <tr>
@@ -28,7 +38,8 @@
       {{this.slot4}}
       {{this.slot5}}
       {{this.slot6}}</td>
-      <td><button class="button">Edit</button><br><br>
+      <td>      <form action="/admin/edit_post_rent/{{this._id}}" method="post"><input class="button" type="submit" value="Edit"><br><br></a></form>
+<br><br>
       <form action="/admin/delete_post/{{this._id}}" method="post"><input class="button" type="submit" value="Delete"><br><br></a></form></td>
     </tr>{{/each}}
     

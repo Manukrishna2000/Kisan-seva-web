@@ -5,8 +5,9 @@
 
             
     <form action="/admin/view_products_search" method="post">
-     <datalist id="suggestions" aria-placeholder="select category" >{{#each data}}
-     <option> {{this.Category}}</option>
+    <datalist id="suggestions" >{{#each data1}}
+      {{this}}
+     <option value="{{this}}"> {{this}}</option>
         {{/each}}
     </datalist>
     <input  autoComplete="on" list="suggestions" name="Category">

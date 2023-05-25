@@ -23,6 +23,7 @@ const async = require('hbs/lib/async');
 //   }
 // }
 //form action
+
 router.post('/product_post', function(req, res, next) {
   fn.add(req.body,(callback)=>{
     let photo=req.files.Image
@@ -144,7 +145,9 @@ router.get('/rental',ath, function(req, res, next) {
 
 router.get('/view_rental',ath, async function(req, res, next) {
   let data = await db.collection('admin_rental').find().toArray()
-  res.render('admin/view_rental',{adminroute:true,data})
+  let data1=await db.collection('admin_rental').distinct('Category')
+  
+  res.render('admin/view_rental',{adminroute:true,data,data1})
   
 });
 
@@ -169,6 +172,7 @@ router.get('/review',ath, function(req, res, next) {
 });
 router.get('/view_products',ath, async function(req, res, next) {
   let data=await db.collection('farmer_products').find().toArray()
+  
   res.render('admin/view_products',{adminroute:true,data})
   
 });
@@ -229,8 +233,9 @@ router.get('/add_products',ath, function(req, res, next) {
 });
 router.get('/products',ath, async function(req, res, next) {
   let data = await db.collection('admin_products').find().toArray()
+  let data1=await db.collection('admin_products').distinct('Category')
 
-  res.render('admin/products',{adminroute:true,data})
+  res.render('admin/products',{adminroute:true,data,data1})
   
 });
 

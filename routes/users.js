@@ -21,10 +21,12 @@ router.post('/checkout_post', function(req, res, next) {
 
 router.get('/',ath, async function(req, res, next) {
   let data=await db.collection('farmer_products').find().toArray()
+  let data1=await db.collection('farmer_products').distinct('Category')
+  let data2=await db.collection('farmer_products').distinct('Pincode')
   console.log(req.session.loginStatus);
   console.log(req.session.userid);
   if(req.session.loginStatus){
-  res.render('customer/cust_home',{custeroute:true,data})}
+  res.render('customer/cust_home',{custeroute:true,data,data1,data2})}
   else{
     res.redirect('/login')
   }
@@ -41,9 +43,10 @@ router.post('/pincode_purchase',ath, async function(req, res, next) {
   console.log(req.body.pincode);
   res.render('customer/cust_home',{custeroute:true,data});
 });
-router.get('/category/:id',ath, async function(req, res, next) {
+router.get('/category/:Category',ath, async function(req, res, next) {
+  const cat=req.params.Category
   const objectId = new ObjectId(req.params.id)
-  let data=await db.collection('farmer_products').find({_id:objectId}).toArray()
+  let data=await db.collection('farmer_products').find({Category:cat}).toArray()
   res.render('customer/cust_home',{custeroute:true,data});
 });
 

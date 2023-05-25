@@ -104,15 +104,17 @@ router.post('/purchase_booking_post/:id',async function(req,res,next){
 router.get('/', ath, async function(req, res, next) {
   if(req.session.loginStatus){
   let data=await db.collection('admin_rental').find().toArray()
+  let data1=await db.collection('admin_rental').distinct('Category')
   console.log(data);
-  res.render('farmer/home',{farmerroute:true,data});}
+  res.render('farmer/home',{farmerroute:true,data,data1});}
   
 });
 
 router.get('/purchase',ath,  async function(req, res, next) {
   let data=await db.collection('admin_products').find().toArray()
+  let data1=await db.collection('admin_products').distinct('Category')
   console.log(data);
-  res.render('farmer/purch_home',{farmerroute:true,data});
+  res.render('farmer/purch_home',{farmerroute:true,data,data1});
 });
 
 router.get('/work_request',ath,  function(req, res, next) {
@@ -149,25 +151,29 @@ router.get('/view_work',ath,async function(req, res, next) {
 router.get('/booking/:id',  async function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
   let data=await db.collection('admin_rental').findOne({_id:objectId})
+  let data2=await db.collection('farmer_rent_booking').find().toArray()
   let data1=req.session.userid
-  res.render('farmer/booking',{farmerroute:true,data,data1});
+  res.render('farmer/booking',{farmerroute:true,data,data1,data2});
 });
 router.get('/purch_booking/:id',ath, async function(req, res, next) {
   const objectId = new ObjectId(req.params.id)
   let data=await db.collection('admin_products').findOne({_id:objectId})
+  let data2=await db.collection('farmer_product_booking').find().toArray()
   let data1=req.session.userid
-  res.render('farmer/purch_book',{farmerroute:true,data,data1});
+  res.render('farmer/purch_book',{farmerroute:true,data,data1,data2});
 });
 
-router.get('/category/:id',ath, async function(req, res, next) {
+router.get('/category/:Category',ath, async function(req, res, next) {
+  let cat=req.params.Category
   const objectId = new ObjectId(req.params.id)
-  let data=await db.collection('admin_products').find({_id:objectId}).toArray()
+  let data=await db.collection('admin_products').find({Category:cat}).toArray()
   res.render('farmer/purch_home',{farmerroute:true,data});
 });
 
-router.get('/category_rent/:id',ath, async function(req, res, next) {
+router.get('/category_rent/:category',ath, async function(req, res, next) {
+  const cat=req.params.category
   const objectId = new ObjectId(req.params.id)
-  let data=await db.collection('admin_rental').find({_id:objectId}).toArray()
+  let data=await db.collection('admin_rental').find({Category:cat}).toArray()
   res.render('farmer/home',{farmerroute:true,data});
 });
 

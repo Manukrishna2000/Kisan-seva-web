@@ -3,8 +3,9 @@
 
             
     <form action="/admin/view_rental_search" method="post">
-     <datalist id="suggestions" >{{#each data}}
-     <option value="{{this.Category}}"> {{this.Category}}</option>
+     <datalist id="suggestions" >{{#each data1}}
+      {{this}}
+     <option value="{{this}}"> {{this}}</option>
         {{/each}}
     </datalist>
     <input  autoComplete="on" list="suggestions" name="Category">

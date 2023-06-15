@@ -29,8 +29,10 @@
     <p class="card-text"><input type='text'value='{{this.Contact}}' class="booking1" name="Contact"><br>
   Worker required
     <input type='text' value='{{this.Worker_Nos}}' id='work' class="booking1" name="Worker_Nos"> 
-    <p class="card-text"><input type='number' placeholder="Add your Contact" required   name="Worker_Contact"><br>
+    <p class="card-text"><input type='tel'  pattern="[0-9]{10}"
+       name="Contact" placeholder="Add your Contact" required   name="Worker_Contact"><br>
     <br><input type="submit" class="search_button">
+    <h1>hello</h1>
     
     <input type='text' value="{{../data1}}" class="booking1" name="user_id" hidden></p><br>
     <input type='text'value='{{this.user_id}}'  class="booking1" name="Farmer_id" hidden></p><br>
